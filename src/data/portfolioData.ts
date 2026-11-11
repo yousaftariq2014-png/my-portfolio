@@ -198,24 +198,27 @@ export const SERVICE_DOORS: ServiceDoor[] = [
     },
     projects: [
       {
-        id: 'web-foundations',
-        title: 'Modern Web Architecture & Layout Showcase',
-        subtitle: 'Semantic Structure & Interactive Components',
-        category: 'BS COMPUTER SCIENCE • WEB DEVELOPMENT',
-        description: 'Clean, accessible web page architectures built with modern semantic markup, responsive grid structures, and interactive UI states. Demonstrates foundational software engineering discipline paired with modern responsive design.',
+        id: 'chai-mehfil-cafe',
+        title: 'Chai Mehfil Cafe — Rooftop & Desi Bites',
+        subtitle: 'Live Deployed Web Application · Lahore, Pakistan',
+        category: 'LIVE PRODUCTION WEB APP • DESIGN & FRONTEND',
+        description: 'A rich, atmospheric digital brand and web application designed and built for Chai Mehfil Cafe (Opp. Alrehman Garden Phase II, Lahore). Features bilingual Roman Urdu & Nastaliq calligraphy support, dynamic midnight deals (5:00 PM – 4:00 AM), interactive Khas Menu, mood-matcher beverage generator, rooftop seating preview, and live ambient music vibes.',
         highlights: [
-          'Semantic HTML5 structure with zero layout shift',
-          'Clean CSS layout mathematics and accessible typography',
-          'Integration with dynamic interactive widgets and calculators',
-          'University of Lahore Computer Science capstone foundations'
+          'Live production web application deployed on Vercel: https://chaimehfil-flame.vercel.app',
+          'Bilingual interface with Roman Urdu & Urdu calligraphy toggle',
+          'Dynamic Midnight Deals (5:00 PM – 4:00 AM) and interactive Khas Menu',
+          'Mood Matcher beverage engine and Rooftop Seating selector',
+          'Integrated 1-Click WhatsApp Ordering and Google Maps Lahore location',
+          'Mobile-first responsive design with 4.9★ rating (1,500+ reviews)'
         ],
-        tags: ['HTML5', 'Computer Science', 'Page Layout', 'Responsive Design', 'University of Lahore'],
+        tags: ['Live Web App', 'Vercel Deployment', 'UI/UX Design', 'Chai Mehfil', 'Responsive Design', 'Bilingual Urdu', 'Lahore'],
         type: 'desktop',
-        image: '/src/assets/images/project_web_platform_1794424699631.jpg',
+        image: '/assets/aistudio/_C5CFA02A-967A-43FE-9076-ABA9E0246121__3bce116f.png',
+        externalUrl: 'https://chaimehfil-flame.vercel.app',
         stats: [
-          { label: 'Degree', value: 'BS Computer Science' },
-          { label: 'University', value: 'UOL (2023)' },
-          { label: 'Core Skills', value: 'HTML & CS' }
+          { label: 'Platform', value: 'Vercel Live' },
+          { label: 'Rating', value: '4.9 ★ (1.5K+)' },
+          { label: 'Role', value: 'UI/UX & Frontend' }
         ]
       }
     ]
@@ -232,10 +235,11 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
     description: 'Six years of hands-on experience analyzing currency markets using price charts and technical-analysis concepts. Monitored currency-pair movements, applied strategy-based setups with strict risk management, and founded Realify AI to generate compelling short-form and storytelling video content.',
     achievements: [
       'Successfully navigated currency market cycles with disciplined capital protection and patience',
+      'Designed and deployed Chai Mehfil Cafe (chaimehfil-flame.vercel.app) production web application',
       'Built and scaled Realify AI video channels with 100% AI-generated short-form content',
       'Engineered structured prompt workflows for high-accuracy video scene generation'
     ],
-    skills: ['Market Analysis', 'Technical Analysis', 'Risk Management', 'AI Video Creation', 'AI Prompt Engineering', 'Realify AI']
+    skills: ['Market Analysis', 'Technical Analysis', 'Risk Management', 'Web Development', 'Chai Mehfil Cafe', 'AI Video Creation', 'Realify AI']
   },
   {
     year: 2023,
@@ -288,7 +292,7 @@ export const RESUME_DATA = {
     facebook: 'Realify AI',
     pdfUrl: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf'
   },
-  summary: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $50,000+ funded trading capital across FundedNext ($50K Elite Trader), My Funded FX ($10K), Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and skilled prompt engineer combining disciplined risk management with digital AI pipelines.',
+  summary: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $50,000+ funded trading capital across FundedNext ($50K Elite Trader), My Funded FX ($10K), Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and web developer behind Chai Mehfil Cafe (chaimehfil-flame.vercel.app).',
   certifications: [
     {
       firm: 'FundedNext',
@@ -351,10 +355,11 @@ export const RESUME_DATA = {
       ]
     },
     {
-      area: 'Web Development (Foundational)',
+      area: 'Web Development (Live Production & HTML)',
       bullets: [
-        'Build and structure basic web pages using HTML, including headings, paragraphs, links, images and page layout.',
-        'Actively expanding knowledge of broader web-development technologies.'
+        'Designed and deployed Chai Mehfil Cafe (chaimehfil-flame.vercel.app): Rooftop & Desi Bites in Lahore, featuring bilingual Roman/Urdu mode, dynamic midnight deals, and seating selector.',
+        'Build and structure clean, responsive web pages using HTML5, modern layout mathematics, and semantic accessibility.',
+        'Actively expanding knowledge of modern web development and cloud deployments on Vercel.'
       ]
     }
   ],

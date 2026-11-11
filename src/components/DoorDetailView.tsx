@@ -144,6 +144,18 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
 
                     {/* Action buttons (From video Frame 00:07 - 00:08) */}
                     <div className="flex flex-wrap items-center gap-3 pt-3">
+                      {proj.externalUrl && (
+                        <a
+                          href={proj.externalUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-black font-bold rounded-xl text-xs sm:text-sm transition-all duration-150 active:scale-95 shadow-lg shadow-amber-400/20 cursor-pointer"
+                        >
+                          <span>Launch Live Website</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+
                       <button
                         onClick={onOpenContact}
                         className="flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-amber-400 font-bold rounded-xl text-xs sm:text-sm transition-all duration-150 active:scale-95 cursor-pointer"
@@ -192,15 +204,45 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
                       </div>
                     )}
 
-                    {/* Mode 6: Desktop Image / Web Project */}
+                    {/* Mode 6: Desktop Image / Browser Mockup Web Project */}
                     {(proj.type === 'desktop' || (!proj.type && proj.image)) && proj.image && (
-                      <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#161a24] shadow-xl group">
-                        <img
-                          src={proj.image}
-                          alt={proj.title}
-                          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
+                      <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#161a24] shadow-2xl group relative">
+                        {/* Browser Window Chrome */}
+                        <div className="px-4 py-2 bg-[#1c212e] border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                          </div>
+                          <div className="px-3 py-0.5 rounded-md bg-black/40 border border-white/5 text-[10px] text-slate-300 flex items-center gap-1.5 truncate max-w-[220px]">
+                            <span className="text-emerald-400 font-bold">🔒</span>
+                            <span>{proj.externalUrl ? 'chaimehfil-flame.vercel.app' : proj.title}</span>
+                          </div>
+                          <span className="w-3" />
+                        </div>
+
+                        <a
+                          href={proj.externalUrl || '#'}
+                          target={proj.externalUrl ? '_blank' : undefined}
+                          rel="noreferrer"
+                          className="block relative overflow-hidden cursor-pointer"
+                        >
+                          <img
+                            src={proj.image}
+                            alt={proj.title}
+                            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                          {proj.externalUrl && (
+                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white font-mono text-xs font-bold backdrop-blur-[2px]">
+                              <span className="px-3 py-1.5 rounded-xl bg-amber-400 text-black font-bold flex items-center gap-1.5 shadow-lg">
+                                <span>Explore Live App</span>
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </span>
+                              <span className="text-[11px] text-slate-300">Opens chaimehfil-flame.vercel.app</span>
+                            </div>
+                          )}
+                        </a>
                       </div>
                     )}
                   </div>

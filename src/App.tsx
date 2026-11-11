@@ -116,6 +116,7 @@ export default function App() {
             <ProofStrip
               onOpenConsultation={() => handleOpenContact()}
               onViewForexProof={() => handleSelectDoorById('forex-trading')}
+              onViewWebProof={() => handleSelectDoorById('web-development')}
             />
 
             {/* Signature Feature: 3D Doors */}

@@ -1,6 +1,8 @@
 {
-  "name": "Rishi — Creative Developer & Designer Portfolio",
+  "name": "yousaf  Creative Developer & Designer Portfolio",
   "description": "Interactive creative developer portfolio with 3D perspective doors, dynamic flip cards, playable project showcases, and a time machine journey.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
