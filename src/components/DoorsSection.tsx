@@ -8,28 +8,27 @@ interface DoorsSectionProps {
 }
 
 export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
-  // Initially null -> all doors start closed until mouse hovers or mobile touches
+  // activeDoorId controls which door is physically swinging open (null when mouse is not hovering)
   const [activeDoorId, setActiveDoorId] = useState<ServiceId | null>(null);
 
+  // inspectedDoor preserves the last hovered door for the right-hand dossier
+  const [inspectedDoor, setInspectedDoor] = useState<ServiceDoor | null>(null);
+
   const activeDoor = activeDoorId ? SERVICE_DOORS.find((d) => d.id === activeDoorId) || null : null;
+  const displayDoor = activeDoor || inspectedDoor;
 
   const handleDoorClick = (door: ServiceDoor) => {
-    // If on mobile or clicking directly:
-    // If already open, enter into details; if closed, open it and allow next click to enter
-    if (activeDoorId === door.id) {
-      onEnterDoor(door);
-    } else {
-      setActiveDoorId(door.id);
-    }
+    // Direct click on door enters into the full detail view
+    onEnterDoor(door);
   };
 
   return (
     <section id="doors-section" className="py-16 sm:py-24 relative overflow-hidden bg-[#0d0f12]">
       {/* Background ambient lighting */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-[140px] opacity-25 pointer-events-none transition-colors duration-700"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-[140px] opacity-25 pointer-events-none transition-colors duration-500"
         style={{
-          backgroundColor: activeDoor ? activeDoor.colorTheme.glowColor : '#f59e0b'
+          backgroundColor: displayDoor ? displayDoor.colorTheme.glowColor : '#f59e0b'
         }}
       />
 
@@ -45,7 +44,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
           </h2>
           <p className="text-sm sm:text-base text-slate-400 font-sans max-w-xl mx-auto flex items-center justify-center gap-1.5">
             <MousePointer className="w-4 h-4 text-amber-400 inline shrink-0" />
-            <span>Hover on laptop or tap on mobile to open any door. Click to enter.</span>
+            <span>Hover to swing door open (closes on mouse leave). Click to enter.</span>
           </p>
         </div>
 
@@ -53,26 +52,38 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left / Center: The 4 Doors in 3D Perspective */}
           <div className="lg:col-span-7 flex justify-center">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 w-full max-w-2xl py-6 px-3 bg-[#131722]/60 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl">
+            <div
+              onMouseLeave={() => setActiveDoorId(null)}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 w-full max-w-2xl py-6 px-3 bg-[#131722]/60 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl"
+            >
               {SERVICE_DOORS.map((door) => {
                 const isOpen = activeDoorId === door.id;
 
                 return (
                   <div
                     key={door.id}
-                    onMouseEnter={() => setActiveDoorId(door.id)}
+                    onMouseEnter={() => {
+                      setActiveDoorId(door.id);
+                      setInspectedDoor(door);
+                    }}
+                    onMouseLeave={() => {
+                      setActiveDoorId(null);
+                    }}
                     onTouchStart={() => {
                       if (activeDoorId !== door.id) {
                         setActiveDoorId(door.id);
+                        setInspectedDoor(door);
+                      } else {
+                        onEnterDoor(door);
                       }
                     }}
                     onClick={() => handleDoorClick(door)}
                     className="flex flex-col items-center cursor-pointer group"
-                    title={isOpen ? `Click to step inside ${door.title}` : `Hover to open ${door.title}`}
+                    title={`Click to enter ${door.title}`}
                   >
                     {/* Arched Door Frame Container */}
                     <div
-                      className="relative w-full aspect-[1/2.3] max-w-[135px] rounded-t-full p-1.5 transition-all duration-300 group-hover:scale-[1.02]"
+                      className="relative w-full aspect-[1/2.3] max-w-[135px] rounded-t-full p-1.5 transition-all duration-300 group-hover:scale-[1.03]"
                       style={{
                         backgroundColor: '#1e2330',
                         border: `2px solid ${isOpen ? door.colorTheme.glowColor : '#2e374d'}`,
@@ -95,10 +106,6 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                             style={{
                               background: `linear-gradient(180deg, transparent 0%, ${door.colorTheme.glowColor}44 70%, white 100%)`
                             }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onEnterDoor(door);
-                            }}
                           >
                             <span className="text-[10px] font-mono font-black tracking-widest text-white uppercase drop-shadow-md">
                               ENTER
@@ -111,7 +118,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                         )}
                       </div>
 
-                      {/* 3D Perspective Swinging Door Leaf (Swings open on hover or tap) */}
+                      {/* 3D Perspective Swinging Door Leaf (Swings open on hover, closes on mouse leave) */}
                       <div
                         className="w-full h-full rounded-t-full transition-transform duration-500 origin-left relative select-none"
                         style={{
@@ -180,13 +187,13 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
 
           {/* Right Column: Dynamic Service Breakdown Card */}
           <div className="lg:col-span-5">
-            {activeDoor ? (
-              /* When a door is open (on hover or touch): Shows that door's dossier */
+            {displayDoor ? (
+              /* When a door is hovered or was recently inspected */
               <div className="bg-[#131722] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden animate-in fade-in duration-200">
                 {/* Top ambient color edge */}
                 <div
                   className="absolute top-0 inset-x-0 h-1.5 transition-colors duration-500"
-                  style={{ backgroundColor: activeDoor.colorTheme.glowColor }}
+                  style={{ backgroundColor: displayDoor.colorTheme.glowColor }}
                 />
 
                 <div className="flex items-center justify-between mb-4">
@@ -196,31 +203,31 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                   <span
                     className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold"
                     style={{
-                      backgroundColor: `${activeDoor.colorTheme.glowColor}22`,
-                      color: activeDoor.colorTheme.glowColor
+                      backgroundColor: `${displayDoor.colorTheme.glowColor}22`,
+                      color: displayDoor.colorTheme.glowColor
                     }}
                   >
-                    Door Opened · {activeDoor.projects.length} Showcases Inside
+                    {activeDoorId === displayDoor.id ? 'Door Opened' : 'Inspecting'} · {displayDoor.projects.length} Showcases
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-white mb-3">
-                  {activeDoor.title}
+                  {displayDoor.title}
                 </h3>
 
                 {/* Description */}
                 <p className="text-sm text-slate-300 font-sans leading-relaxed mb-6">
-                  {activeDoor.description}
+                  {displayDoor.description}
                 </p>
 
                 {/* Checked specs list */}
                 <div className="space-y-2.5 mb-8">
-                  {activeDoor.features.map((feat, idx) => (
+                  {displayDoor.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
                       <CheckCircle2
                         className="w-4 h-4 shrink-0 mt-0.5"
-                        style={{ color: activeDoor.colorTheme.glowColor }}
+                        style={{ color: displayDoor.colorTheme.glowColor }}
                       />
                       <span>{feat}</span>
                     </div>
@@ -229,18 +236,18 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
 
                 {/* Enter Door CTA Button */}
                 <button
-                  onClick={() => onEnterDoor(activeDoor)}
+                  onClick={() => onEnterDoor(displayDoor)}
                   className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm text-black transition-all shadow-lg active:scale-98 group cursor-pointer"
                   style={{
-                    backgroundColor: activeDoor.colorTheme.glowColor
+                    backgroundColor: displayDoor.colorTheme.glowColor
                   }}
                 >
-                  <span>Enter {activeDoor.shortTitle} Door</span>
+                  <span>Enter {displayDoor.shortTitle} Door</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             ) : (
-              /* When NO door is hovered or touched yet: Shows the invitation prompt */
+              /* When NO door has been hovered yet: Shows the invitation prompt */
               <div className="bg-[#131722]/80 border border-dashed border-white/15 rounded-3xl p-8 sm:p-10 shadow-2xl text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[380px]">
                 <div className="w-16 h-16 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center mb-4 shadow-inner">
                   <DoorOpen className="w-8 h-8" />
@@ -255,15 +262,18 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                 </h3>
 
                 <p className="text-sm text-slate-300 font-sans max-w-sm mb-6 leading-relaxed">
-                  Hover your mouse on laptop or tap any door on mobile to swing it open in 3D. Click to step inside and view live tools and project showcases.
+                  Hover your mouse over any door to open it in 3D. When you move the mouse away, the door will automatically close. Click to step inside.
                 </p>
 
                 <div className="grid grid-cols-2 gap-2 w-full max-w-xs text-xs font-mono text-slate-400">
                   {SERVICE_DOORS.map((d) => (
                     <button
                       key={d.id}
-                      onClick={() => setActiveDoorId(d.id)}
-                      onMouseEnter={() => setActiveDoorId(d.id)}
+                      onClick={() => onEnterDoor(d)}
+                      onMouseEnter={() => {
+                        setActiveDoorId(d.id);
+                        setInspectedDoor(d);
+                      }}
                       className="py-2 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white border border-white/5 transition-colors text-center truncate"
                     >
                       {d.shortTitle}
