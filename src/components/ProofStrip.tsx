@@ -1,0 +1,101 @@
+import React from 'react';
+import { TrendingUp, Film, Cpu, GraduationCap, ShieldCheck, Clock, Zap, MessageSquare } from 'lucide-react';
+import { CREATOR_INFO } from '../data/portfolioData';
+
+interface ProofStripProps {
+  onOpenConsultation: () => void;
+}
+
+export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) => {
+  const metrics = [
+    {
+      icon: TrendingUp,
+      value: '6+ Years',
+      label: 'Forex Chart Analysis',
+      sub: 'Disciplined Capital Protection & Strategy',
+      accent: 'text-emerald-400',
+      border: 'hover:border-emerald-500/40'
+    },
+    {
+      icon: Film,
+      value: 'Realify AI',
+      label: 'AI Video Production',
+      sub: 'Short-Form Narrative & Cinematic Prompts',
+      accent: 'text-purple-400',
+      border: 'hover:border-purple-500/40'
+    },
+    {
+      icon: Cpu,
+      value: 'Context-Rich',
+      label: 'Prompt Architecture',
+      sub: 'Iterative Workflows & High-Yield Accuracy',
+      accent: 'text-cyan-400',
+      border: 'hover:border-cyan-500/40'
+    },
+    {
+      icon: GraduationCap,
+      value: 'BS CS (2023)',
+      label: 'Computer Science',
+      sub: 'University of Lahore · Web & UI Skills',
+      accent: 'text-amber-400',
+      border: 'hover:border-amber-500/40'
+    }
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-12 sm:mb-16 relative z-20">
+      {/* 4-Column Credibility Matrix */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {metrics.map((m, idx) => {
+          const Icon = m.icon;
+          return (
+            <div
+              key={idx}
+              className={`p-5 rounded-2xl bg-[#121622]/90 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-1 ${m.border} group`}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className={`text-2xl sm:text-3xl font-black font-display tracking-tight text-white ${m.accent}`}>
+                  {m.value}
+                </span>
+                <div className="p-2 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform">
+                  <Icon className={`w-4 h-4 ${m.accent}`} />
+                </div>
+              </div>
+              <div className="text-xs font-bold font-mono text-slate-200 uppercase tracking-wide mb-1">
+                {m.label}
+              </div>
+              <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
+                {m.sub}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Trust & Guarantee Banner */}
+      <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-white/5 to-emerald-500/10 border border-white/10 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-slate-300">
+          <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <ShieldCheck className="w-4 h-4" /> 100% Capital Risk Discipline
+          </span>
+          <span className="hidden md:inline text-slate-600">·</span>
+          <span className="flex items-center gap-1.5 text-cyan-300">
+            <Clock className="w-4 h-4" /> &lt; 24h Project Turnaround
+          </span>
+          <span className="hidden md:inline text-slate-600">·</span>
+          <span className="flex items-center gap-1.5 text-amber-300">
+            <Zap className="w-4 h-4" /> Free 15-Min Strategy Consult
+          </span>
+        </div>
+
+        <button
+          onClick={onOpenConsultation}
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-black hover:bg-amber-400 font-bold text-xs transition-transform active:scale-95 shadow-md shrink-0 cursor-pointer"
+        >
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span>Book Free Consultation</span>
+        </button>
+      </div>
+    </div>
+  );
+};

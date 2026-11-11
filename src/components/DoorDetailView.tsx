@@ -6,6 +6,7 @@ import { InteractiveDice } from './InteractiveDice';
 import { InteractiveForexTerminal } from './InteractiveForexTerminal';
 import { InteractiveVideoReel } from './InteractiveVideoReel';
 import { InteractivePromptStudio } from './InteractivePromptStudio';
+import { PromptComparisonWidget } from './PromptComparisonWidget';
 
 interface DoorDetailViewProps {
   door: ServiceDoor;
@@ -202,6 +203,13 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
             );
           })}
         </div>
+
+        {/* Live Proof: Raw vs Engineered AI Prompting */}
+        {(door.id === 'ai-video' || door.id === 'prompt-engineering') && (
+          <div className="mt-14 sm:mt-18">
+            <PromptComparisonWidget />
+          </div>
+        )}
 
         {/* Bottom Back Button */}
         <div className="mt-16 text-center">

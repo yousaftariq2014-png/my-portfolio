@@ -216,11 +216,25 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-sm active:scale-[0.99]"
+              className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-sm active:scale-[0.99] cursor-pointer"
             >
               <Send className="w-4 h-4" />
               Send Project Proposal
             </button>
+
+            {/* Direct WhatsApp Quick Chat Option */}
+            <div className="pt-2 text-center">
+              <a
+                href={`https://wa.me/923114134668?text=${encodeURIComponent(
+                  `Hi Yousaf, I'm interested in discussing a project regarding: ${selectedServices.join(', ')} (Budget: ${budget})`
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                <span>💬 Prefer instant chat? Message on WhatsApp (+92 311 4134668) →</span>
+              </a>
+            </div>
           </form>
         )}
       </div>

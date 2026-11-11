@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { ProofStrip } from './components/ProofStrip';
 import { DoorsSection } from './components/DoorsSection';
 import { DoorDetailView } from './components/DoorDetailView';
 import { TimelineSection } from './components/TimelineSection';
@@ -13,6 +14,7 @@ import { ContactFooter } from './components/ContactFooter';
 import { ProjectInquiryModal } from './components/ProjectInquiryModal';
 import { ResumeModal } from './components/ResumeModal';
 import { WittyBioModal } from './components/WittyBioModal';
+import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { SERVICE_DOORS } from './data/portfolioData';
 import { ServiceDoor, ServiceId } from './types';
 
@@ -86,7 +88,7 @@ export default function App() {
 
       <main>
         {activeDoor ? (
-          /* Dedicated Discipline Studio Showcase (From video Frame 00:07 - 00:10) */
+          /* Dedicated Discipline Studio Showcase */
           <DoorDetailView
             door={activeDoor}
             onBackToDoors={handleBackToDoors}
@@ -95,23 +97,26 @@ export default function App() {
         ) : (
           /* Main Interactive Experience */
           <>
-            {/* Hero Section with Spiral Flip-Board (From video Frame 00:00 - 00:03) */}
+            {/* Hero Section with Spiral Flip-Board */}
             <Hero
               onStartProject={() => handleOpenContact()}
               onExploreWork={handleExploreWork}
               onOpenWittyBio={() => setIsWittyBioModalOpen(true)}
             />
 
-            {/* Signature Feature: 3D Doors (From video Frame 00:04 - 00:06 & 00:11) */}
+            {/* Quantitative Proof & Credibility Matrix (Compels clients to hire) */}
+            <ProofStrip onOpenConsultation={() => handleOpenContact()} />
+
+            {/* Signature Feature: 3D Doors */}
             <DoorsSection onEnterDoor={handleEnterDoor} />
 
-            {/* Time Machine: "Let's go back in time" (From video Frame 00:12 - 00:14) */}
+            {/* Time Machine: "Let's go back in time" */}
             <TimelineSection />
           </>
         )}
       </main>
 
-      {/* Footer & Collaboration CTA (From video Frame 00:15) */}
+      {/* Footer & Collaboration CTA */}
       <ContactFooter
         onStartProject={() => handleOpenContact()}
         onSelectDoor={handleSelectDoorById}
@@ -135,6 +140,9 @@ export default function App() {
         isOpen={isWittyBioModalOpen}
         onClose={() => setIsWittyBioModalOpen(false)}
       />
+
+      {/* Floating 1-Click WhatsApp Direct Chat */}
+      <WhatsAppFloatingButton />
     </div>
   );
 }

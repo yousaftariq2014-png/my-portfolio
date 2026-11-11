@@ -14,6 +14,30 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
   // inspectedDoor preserves the last hovered door for the right-hand dossier
   const [inspectedDoor, setInspectedDoor] = useState<ServiceDoor | null>(null);
 
+  const playDoorChime = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(320, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(540, ctx.currentTime + 0.12);
+
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.13);
+    } catch {
+      // Audio autoplay gracefully handled
+    }
+  };
+
   const activeDoor = activeDoorId ? SERVICE_DOORS.find((d) => d.id === activeDoorId) || null : null;
   const displayDoor = activeDoor || inspectedDoor;
 
@@ -63,6 +87,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                   <div
                     key={door.id}
                     onMouseEnter={() => {
+                      if (activeDoorId !== door.id) playDoorChime();
                       setActiveDoorId(door.id);
                       setInspectedDoor(door);
                     }}
@@ -71,6 +96,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                     }}
                     onTouchStart={() => {
                       if (activeDoorId !== door.id) {
+                        playDoorChime();
                         setActiveDoorId(door.id);
                         setInspectedDoor(door);
                       } else {
