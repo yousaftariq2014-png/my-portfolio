@@ -136,6 +136,31 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
         </div>
 
+        {/* Prop Firm Certifications & Verified Payouts */}
+        <div className="mb-6 space-y-3">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400">
+            <Award className="w-4 h-4 text-emerald-400" /> Prop Firm Certifications & Verified Payouts
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {RESUME_DATA.certifications.map((cert, cIdx) => (
+              <div key={cIdx} className="p-3 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className="text-[10px] font-mono text-slate-400">{cert.firm}</span>
+                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {cert.badge}
+                    </span>
+                  </div>
+                  <h5 className="font-semibold text-white text-xs leading-snug">{cert.title}</h5>
+                </div>
+                <div className="text-[11px] font-mono text-amber-400 mt-2">
+                  Issued: {cert.date}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Technical & Digital Skills */}
         <div className="mb-6 space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400">

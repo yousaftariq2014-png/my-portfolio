@@ -105,7 +105,10 @@ export default function App() {
             />
 
             {/* Quantitative Proof & Credibility Matrix (Compels clients to hire) */}
-            <ProofStrip onOpenConsultation={() => handleOpenContact()} />
+            <ProofStrip
+              onOpenConsultation={() => handleOpenContact()}
+              onViewForexProof={() => handleSelectDoorById('forex-trading')}
+            />
 
             {/* Signature Feature: 3D Doors */}
             <DoorsSection onEnterDoor={handleEnterDoor} />

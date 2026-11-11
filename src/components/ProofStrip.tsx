@@ -4,17 +4,19 @@ import { CREATOR_INFO } from '../data/portfolioData';
 
 interface ProofStripProps {
   onOpenConsultation: () => void;
+  onViewForexProof?: () => void;
 }
 
-export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) => {
+export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onViewForexProof }) => {
   const metrics = [
     {
       icon: TrendingUp,
-      value: '6+ Years',
-      label: 'Forex Chart Analysis',
-      sub: 'Disciplined Capital Protection & Strategy',
+      value: '$10K+ Funded',
+      label: 'Certified Prop Trader',
+      sub: '6 Yrs Experience · Verified Payouts',
       accent: 'text-emerald-400',
-      border: 'hover:border-emerald-500/40'
+      border: 'hover:border-emerald-500/40',
+      clickable: true
     },
     {
       icon: Film,
@@ -22,7 +24,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
       label: 'AI Video Production',
       sub: 'Short-Form Narrative & Cinematic Prompts',
       accent: 'text-purple-400',
-      border: 'hover:border-purple-500/40'
+      border: 'hover:border-purple-500/40',
+      clickable: false
     },
     {
       icon: Cpu,
@@ -30,7 +33,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
       label: 'Prompt Architecture',
       sub: 'Iterative Workflows & High-Yield Accuracy',
       accent: 'text-cyan-400',
-      border: 'hover:border-cyan-500/40'
+      border: 'hover:border-cyan-500/40',
+      clickable: false
     },
     {
       icon: GraduationCap,
@@ -38,7 +42,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
       label: 'Computer Science',
       sub: 'University of Lahore · Web & UI Skills',
       accent: 'text-amber-400',
-      border: 'hover:border-amber-500/40'
+      border: 'hover:border-amber-500/40',
+      clickable: false
     }
   ];
 
@@ -51,7 +56,12 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
           return (
             <div
               key={idx}
-              className={`p-5 rounded-2xl bg-[#121622]/90 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-1 ${m.border} group`}
+              onClick={() => {
+                if (m.clickable && onViewForexProof) {
+                  onViewForexProof();
+                }
+              }}
+              className={`p-5 rounded-2xl bg-[#121622]/90 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-1 ${m.border} group ${m.clickable ? 'cursor-pointer hover:border-emerald-400/60' : ''}`}
             >
               <div className="flex items-center justify-between mb-3">
                 <span className={`text-2xl sm:text-3xl font-black font-display tracking-tight text-white ${m.accent}`}>
@@ -61,8 +71,13 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
                   <Icon className={`w-4 h-4 ${m.accent}`} />
                 </div>
               </div>
-              <div className="text-xs font-bold font-mono text-slate-200 uppercase tracking-wide mb-1">
-                {m.label}
+              <div className="text-xs font-bold font-mono text-slate-200 uppercase tracking-wide mb-1 flex items-center justify-between">
+                <span>{m.label}</span>
+                {m.clickable && (
+                  <span className="text-[10px] text-emerald-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                    View Proofs ↗
+                  </span>
+                )}
               </div>
               <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
                 {m.sub}
@@ -76,7 +91,7 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation }) =>
       <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-white/5 to-emerald-500/10 border border-white/10 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-slate-300">
           <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <ShieldCheck className="w-4 h-4" /> 100% Capital Risk Discipline
+            <ShieldCheck className="w-4 h-4" /> $10K+ Funded & Verified Cash Payouts
           </span>
           <span className="hidden md:inline text-slate-600">·</span>
           <span className="flex items-center gap-1.5 text-cyan-300">

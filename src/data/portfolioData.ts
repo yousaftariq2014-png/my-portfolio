@@ -2,39 +2,41 @@ import { ServiceDoor, TimelineMilestone } from '../types';
 
 export const CREATOR_INFO = {
   name: 'Yousaf',
-  fullName: 'Yousaf Tariq',
-  title: 'Computer Science Graduate • Forex Market Analyst • AI & Web Skills',
-  bio: 'Computer Science graduate with six years of hands-on experience in the Forex market, combining analytical thinking, disciplined risk management and technical-analysis skills. Skilled in HTML web development, AI prompt engineering and AI video creation (Creator of Realify AI). Passionate about using digital tools and AI to solve practical problems and create engaging content.',
+  fullName: 'Hafiz Yousaf Tariq',
+  title: 'Computer Science Graduate • Certified Forex Prop Trader • AI & Web Skills',
+  bio: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of disciplined Forex market analysis. Successfully funded on $10,000+ prop firm accounts (My Funded FX, Atmos Funded, Funds For Traders) with verified cash payouts (OFP Funding). Founder of Realify AI and specialist in production-grade prompt engineering.',
   phone: '03114134668',
   email: 'yousaftariq2015@gmail.com',
   alternateEmail: 'yousaftariq2010@gmail.com',
   facebookPage: 'Realify AI',
   location: 'Lahore, Pakistan • Open for Global Remote',
-  status: 'Open for Professional Roles & Collaborative Projects',
+  status: 'Open for Professional Roles, Funded Allocations & Projects',
   roles: [
-    'Forex Market Analyst',
-    'AI Video Creator',
+    'Certified Forex Prop Trader',
+    'Forex Market Analyst (6 Yrs)',
+    'AI Video Creator (Realify AI)',
     'AI Prompt Engineer',
-    'CS Graduate & Web Dev'
+    'BS Computer Science (UOL)'
   ],
   portraitImage: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_8.22.41_PM_ad2ea340.jpeg',
   cvPdfPath: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf',
-  wittyBio: "Combining 6 years of Forex chart discipline with generative AI pipelines and computer science foundations. Whether calculating pip risk or engineering high-yield video prompts for Realify AI, precision always comes first."
+  wittyBio: "Combining 6 years of Forex chart discipline, $10,000+ funded prop firm execution, and generative AI pipelines with computer science foundations. Whether calculating pip risk or engineering high-yield video prompts for Realify AI, precision always comes first."
 };
 
 export const SERVICE_DOORS: ServiceDoor[] = [
   {
     id: 'forex-trading',
-    title: 'Forex Market Analysis',
+    title: 'Forex Market Analysis & Prop Trading',
     shortTitle: 'Forex Trading',
-    tagline: '6 years of disciplined price action, currency analysis & strict capital protection.',
-    description: 'Six years of hands-on experience monitoring currency-pair movements, assessing potential market direction through technical analysis, and executing strategy-based trading setups with ironclad risk management.',
+    tagline: '6 years of disciplined price action, $10,000+ funded accounts & verified payouts.',
+    description: 'Six years of hands-on experience monitoring currency-pair movements, assessing potential market direction through technical analysis, and executing strategy-based trading setups with ironclad risk management. Certified funded trader across My Funded FX ($10,000), Atmos Funded, Funds For Traders, and verified OFP cash payouts.',
     features: [
-      '6 years of hands-on market analysis in Forex currency pairs',
-      'Monitored EUR/USD, GBP/USD, XAU/USD price charts & market behavior',
-      'Strategy-based trading setups with strict focus on capital protection',
-      'Market review with patience, discipline and informed decision-making',
-      'Technical analysis: support/resistance, trendlines, order blocks & liquidity'
+      '6 years of hands-on market analysis in Forex currency pairs & Gold',
+      'Certified Prop Trader: $10,000 Account with My Funded FX',
+      'Atmos Funded Certified Trader & Funds For Traders recognition',
+      'Verified real cash payouts from Overview Funding Program (OFP)',
+      'Strict 1%–2% risk management & capital protection discipline',
+      'Technical analysis: order blocks, liquidity sweeps, support/resistance & momentum'
     ],
     colorTheme: {
       doorColor: '#10231c',
@@ -59,9 +61,9 @@ export const SERVICE_DOORS: ServiceDoor[] = [
         tags: ['Price Action', 'Technical Analysis', 'Risk Management', 'Capital Protection', 'EUR/USD'],
         type: 'forex-terminal',
         stats: [
+          { label: 'Prop Firm Funded', value: '$10,000+' },
           { label: 'Trading Experience', value: '6 Years' },
-          { label: 'Risk Rule', value: '1% - 2% Max' },
-          { label: 'Primary Markets', value: 'FX & Gold' }
+          { label: 'Risk Rule', value: '1% - 2% Max' }
         ]
       },
       {
@@ -277,15 +279,41 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
 ];
 
 export const RESUME_DATA = {
-  name: 'Yousaf Tariq',
-  title: 'Computer Science Graduate • Forex Market Analyst • AI & Web Skills',
+  name: 'Hafiz Yousaf Tariq',
+  title: 'Computer Science Graduate • Certified Forex Prop Trader • AI & Web Skills',
   contact: {
     phone: '03114134668',
     email: 'yousaftariq2015@gmail.com',
     facebook: 'Realify AI',
     pdfUrl: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf'
   },
-  summary: 'Computer Science graduate with six years of hands-on experience in the Forex market, combining analytical thinking, disciplined risk management and technical-analysis skills. Also skilled in HTML web development, AI prompt engineering and AI video creation. Passionate about using digital tools and AI to solve practical problems and create engaging content. Seeking an opportunity to contribute to a professional team while continuing to grow technically and creatively.',
+  summary: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $10,000+ funded trading capital across My Funded FX, Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and skilled prompt engineer combining disciplined risk management with digital AI pipelines.',
+  certifications: [
+    {
+      firm: 'My Funded FX',
+      title: 'Funded Trader Certificate ($10,000 Account)',
+      date: 'July 17, 2023',
+      badge: '$10K FUNDED'
+    },
+    {
+      firm: 'Atmos Funded',
+      title: 'Atmos Traded Certified (Stage Cleared & Master)',
+      date: 'April & May 2026',
+      badge: 'ATMOS CERTIFIED'
+    },
+    {
+      firm: 'Funds For Traders',
+      title: 'Certificate of Recognition (Funded Trader)',
+      date: 'June 12, 2024',
+      badge: 'FFT FUNDED'
+    },
+    {
+      firm: 'OFP (Overview Funding Program)',
+      title: 'Verified Cash Payouts ($380.05 + $133.68)',
+      date: 'Jan & Feb 2025',
+      badge: 'CASH PAYOUTS'
+    }
+  ],
   experience: [
     {
       period: '6 Years Experience',

@@ -7,6 +7,7 @@ import { InteractiveForexTerminal } from './InteractiveForexTerminal';
 import { InteractiveVideoReel } from './InteractiveVideoReel';
 import { InteractivePromptStudio } from './InteractivePromptStudio';
 import { PromptComparisonWidget } from './PromptComparisonWidget';
+import { ForexCertificatesVault } from './ForexCertificatesVault';
 
 interface DoorDetailViewProps {
   door: ServiceDoor;
@@ -203,6 +204,13 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
             );
           })}
         </div>
+
+        {/* Verified Forex Certificates & Payouts Vault */}
+        {door.id === 'forex-trading' && (
+          <div className="mt-14 sm:mt-18">
+            <ForexCertificatesVault />
+          </div>
+        )}
 
         {/* Live Proof: Raw vs Engineered AI Prompting */}
         {(door.id === 'ai-video' || door.id === 'prompt-engineering') && (
