@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Copy, Check, Mail, Heart, Github, Twitter, Linkedin, Dribbble, Globe } from 'lucide-react';
+import { ArrowUpRight, Copy, Check, Mail, Heart, Github, Twitter, Linkedin, Dribbble, Globe, Calendar } from 'lucide-react';
 import { CREATOR_INFO } from '../data/portfolioData';
 import { ServiceId } from '../types';
 
 interface ContactFooterProps {
   onStartProject: () => void;
+  onBookStrategyCall: () => void;
   onSelectDoor: (id: ServiceId) => void;
   onNavigateHome: () => void;
   onNavigateStory: () => void;
@@ -12,6 +13,7 @@ interface ContactFooterProps {
 
 export const ContactFooter: React.FC<ContactFooterProps> = ({
   onStartProject,
+  onBookStrategyCall,
   onSelectDoor,
   onNavigateHome,
   onNavigateStory
@@ -55,6 +57,14 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({
             >
               <span>Start a project</span>
               <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={onBookStrategyCall}
+              className="flex items-center gap-2 px-6 py-4 bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 font-semibold rounded-xl text-sm border border-amber-400/30 transition-all duration-150 active:scale-95 cursor-pointer shadow-lg shadow-amber-500/5"
+            >
+              <Calendar className="w-4 h-4 text-amber-400" />
+              <span>Book 15-Min Call</span>
             </button>
 
             <button

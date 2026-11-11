@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, ArrowUpRight, Menu, X } from 'lucide-react';
+import { Clock, ArrowUpRight, Menu, X, Calendar } from 'lucide-react';
 import { ServiceId } from '../types';
 
 interface NavbarProps {
   onSelectDoor: (id: ServiceId) => void;
   onOpenResume: () => void;
   onOpenContact: () => void;
+  onBookCall: () => void;
   onNavigateHome: () => void;
   onNavigateStory: () => void;
 }
@@ -14,6 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectDoor,
   onOpenResume,
   onOpenContact,
+  onBookCall,
   onNavigateHome,
   onNavigateStory
 }) => {
@@ -84,15 +86,23 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={onOpenResume}
-            className="hidden sm:inline-flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors whitespace-nowrap"
+            className="hidden md:inline-flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors whitespace-nowrap"
           >
             <span>Resume</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
           </button>
 
           <button
+            onClick={onBookCall}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-amber-300 bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 rounded-lg transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer"
+          >
+            <Calendar className="w-3.5 h-3.5 text-amber-400" />
+            <span>Book Call</span>
+          </button>
+
+          <button
             onClick={onOpenContact}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-black bg-white hover:bg-amber-400 rounded-lg transition-all duration-150 shadow-sm active:scale-95 whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-black bg-white hover:bg-amber-400 rounded-lg transition-all duration-150 shadow-sm active:scale-95 whitespace-nowrap cursor-pointer"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -130,22 +140,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             ))}
           </div>
-          <div className="pt-3 border-t border-white/10 flex items-center gap-3">
+          <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
             <button
               onClick={() => {
-                onOpenResume();
+                onBookCall();
                 setMobileMenuOpen(false);
               }}
-              className="w-1/2 py-2 text-center text-xs font-medium text-white bg-white/10 rounded-lg hover:bg-white/20"
+              className="py-2.5 text-center text-xs font-medium text-amber-300 bg-amber-400/10 border border-amber-400/30 rounded-lg hover:bg-amber-400/20 flex items-center justify-center gap-1.5"
             >
-              View Resume
+              <Calendar className="w-3.5 h-3.5 text-amber-400" />
+              <span>Book 15-Min Call</span>
             </button>
             <button
               onClick={() => {
                 onOpenContact();
                 setMobileMenuOpen(false);
               }}
-              className="w-1/2 py-2 text-center text-xs font-semibold text-black bg-amber-400 rounded-lg hover:bg-amber-300"
+              className="py-2.5 text-center text-xs font-semibold text-black bg-white hover:bg-amber-400 rounded-lg"
             >
               Start Project
             </button>

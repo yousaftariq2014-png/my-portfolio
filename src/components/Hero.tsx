@@ -1,16 +1,18 @@
 import React from 'react';
-import { ArrowUpRight, ArrowDown, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Sparkles, Calendar } from 'lucide-react';
 import { CREATOR_INFO } from '../data/portfolioData';
 import { RealisticFlipCalendar } from './RealisticFlipCalendar';
 
 interface HeroProps {
   onStartProject: () => void;
+  onBookStrategyCall: () => void;
   onExploreWork: () => void;
   onOpenWittyBio: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onStartProject,
+  onBookStrategyCall,
   onExploreWork,
   onOpenWittyBio
 }) => {
@@ -49,18 +51,26 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
+            <div className="flex flex-wrap items-center gap-3.5 mb-6">
               <button
                 onClick={onStartProject}
-                className="flex items-center gap-2 px-6 py-3.5 bg-white text-black hover:bg-amber-400 font-bold rounded-xl text-sm transition-all duration-150 shadow-lg shadow-white/5 active:scale-95 cursor-pointer"
+                className="flex items-center gap-2 px-5 sm:px-6 py-3.5 bg-white text-black hover:bg-amber-400 font-bold rounded-xl text-sm transition-all duration-150 shadow-lg shadow-white/5 active:scale-95 cursor-pointer"
               >
                 <span>Start a project</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
 
               <button
+                onClick={onBookStrategyCall}
+                className="flex items-center gap-2 px-5 py-3.5 bg-gradient-to-r from-amber-400/20 via-amber-400/10 to-transparent hover:bg-amber-400/25 text-amber-300 font-semibold rounded-xl text-sm border border-amber-400/30 transition-all duration-150 shadow-sm active:scale-95 cursor-pointer"
+              >
+                <Calendar className="w-4 h-4 text-amber-400" />
+                <span>Book 15-Min Call</span>
+              </button>
+
+              <button
                 onClick={onExploreWork}
-                className="flex items-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-medium rounded-xl text-sm border border-white/10 transition-all duration-150 active:scale-95 cursor-pointer"
+                className="flex items-center gap-2 px-5 py-3.5 bg-white/5 hover:bg-white/10 text-white font-medium rounded-xl text-sm border border-white/10 transition-all duration-150 active:scale-95 cursor-pointer"
               >
                 <span>See my work</span>
                 <ArrowDown className="w-4 h-4 text-slate-400" />

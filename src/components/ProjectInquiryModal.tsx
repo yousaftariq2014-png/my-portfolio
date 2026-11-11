@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { X, Check, Send, Sparkles } from 'lucide-react';
+import { X, Check, Send, Sparkles, Calendar, Video } from 'lucide-react';
 import { ServiceId } from '../types';
 
 interface ProjectInquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultService?: ServiceId;
+  onSwitchToStrategyCall?: () => void;
 }
 
 export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
   isOpen,
   onClose,
-  defaultService
+  defaultService,
+  onSwitchToStrategyCall
 }) => {
   const [selectedServices, setSelectedServices] = useState<string[]>(
     defaultService ? [defaultService] : ['web-development']
@@ -88,6 +90,22 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               <p className="text-sm text-slate-400 mt-1">
                 Choose the services you need and ballpark scope. Let's create something extraordinary.
               </p>
+
+              {onSwitchToStrategyCall && (
+                <div className="mt-3.5 p-2.5 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2 text-amber-300">
+                    <Video className="w-4 h-4 text-amber-400 shrink-0" />
+                    <span>Prefer to talk directly on a 1-on-1 video call?</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={onSwitchToStrategyCall}
+                    className="px-3 py-1 bg-amber-400 hover:bg-amber-300 text-black font-bold rounded-lg shrink-0 transition-colors cursor-pointer"
+                  >
+                    Book 15-Min Call →
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Service selector */}

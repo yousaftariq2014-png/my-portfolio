@@ -14,6 +14,7 @@ import { ContactFooter } from './components/ContactFooter';
 import { ProjectInquiryModal } from './components/ProjectInquiryModal';
 import { ResumeModal } from './components/ResumeModal';
 import { WittyBioModal } from './components/WittyBioModal';
+import { StrategyCallModal } from './components/StrategyCallModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { DoorPortalTransition } from './components/DoorPortalTransition';
 import { SERVICE_DOORS } from './data/portfolioData';
@@ -24,6 +25,7 @@ export default function App() {
   const [portalTransitionDoor, setPortalTransitionDoor] = useState<ServiceDoor | null>(null);
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState<ServiceId | undefined>(undefined);
+  const [isStrategyCallModalOpen, setIsStrategyCallModalOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isWittyBioModalOpen, setIsWittyBioModalOpen] = useState(false);
 
@@ -90,6 +92,7 @@ export default function App() {
         onSelectDoor={handleSelectDoorById}
         onOpenResume={() => setIsResumeModalOpen(true)}
         onOpenContact={() => handleOpenContact()}
+        onBookCall={() => setIsStrategyCallModalOpen(true)}
         onNavigateHome={handleNavigateHome}
         onNavigateStory={handleNavigateStory}
       />
@@ -108,6 +111,7 @@ export default function App() {
             {/* Hero Section with Spiral Flip-Board */}
             <Hero
               onStartProject={() => handleOpenContact()}
+              onBookStrategyCall={() => setIsStrategyCallModalOpen(true)}
               onExploreWork={handleExploreWork}
               onOpenWittyBio={() => setIsWittyBioModalOpen(true)}
             />
@@ -131,6 +135,7 @@ export default function App() {
       {/* Footer & Collaboration CTA */}
       <ContactFooter
         onStartProject={() => handleOpenContact()}
+        onBookStrategyCall={() => setIsStrategyCallModalOpen(true)}
         onSelectDoor={handleSelectDoorById}
         onNavigateHome={handleNavigateHome}
         onNavigateStory={handleNavigateStory}
@@ -141,6 +146,19 @@ export default function App() {
         isOpen={isProjectModalOpen}
         onClose={() => setIsProjectModalOpen(false)}
         defaultService={selectedServiceForQuote}
+        onSwitchToStrategyCall={() => {
+          setIsProjectModalOpen(false);
+          setIsStrategyCallModalOpen(true);
+        }}
+      />
+
+      <StrategyCallModal
+        isOpen={isStrategyCallModalOpen}
+        onClose={() => setIsStrategyCallModalOpen(false)}
+        onOpenProjectProposal={() => {
+          setIsStrategyCallModalOpen(false);
+          setIsProjectModalOpen(true);
+        }}
       />
 
       <ResumeModal
