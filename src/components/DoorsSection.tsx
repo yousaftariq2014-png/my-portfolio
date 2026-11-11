@@ -1,0 +1,229 @@
+import React, { useState } from 'react';
+import { ArrowRight, CheckCircle2, Sparkles, Key } from 'lucide-react';
+import { SERVICE_DOORS } from '../data/portfolioData';
+import { ServiceDoor, ServiceId } from '../types';
+
+interface DoorsSectionProps {
+  onEnterDoor: (door: ServiceDoor) => void;
+}
+
+export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
+  const [selectedDoorId, setSelectedDoorId] = useState<ServiceId>('forex-trading');
+  const [hoveredDoorId, setHoveredDoorId] = useState<ServiceId | null>(null);
+
+  const activeDoor = SERVICE_DOORS.find((d) => d.id === (hoveredDoorId || selectedDoorId)) || SERVICE_DOORS[0];
+
+  return (
+    <section id="doors-section" className="py-16 sm:py-24 relative overflow-hidden bg-[#0d0f12]">
+      {/* Background ambient lighting */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-[140px] opacity-25 pointer-events-none transition-colors duration-700"
+        style={{ backgroundColor: activeDoor.colorTheme.glowColor }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header (From video Frame 00:04 - 00:05) */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-amber-400 mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Interactive Disciplines</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black font-display tracking-tight text-white mb-4">
+            Magic happens behind the doors
+          </h2>
+          <p className="text-sm sm:text-base text-slate-400 font-sans max-w-xl mx-auto">
+            Hover or click on any door to unlock the craft. Step inside to inspect live code, interactive games, and design systems.
+          </p>
+        </div>
+
+        {/* 2-Column Desktop Grid: Doors on Left, Discipline Inspector on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left / Center: The 4 Doors in 3D Perspective */}
+          <div className="lg:col-span-7 flex justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 w-full max-w-2xl py-6 px-3 bg-[#131722]/60 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl">
+              {SERVICE_DOORS.map((door) => {
+                const isSelected = selectedDoorId === door.id;
+                const isHovered = hoveredDoorId === door.id;
+                const isOpen = isSelected || isHovered;
+
+                return (
+                  <div
+                    key={door.id}
+                    onClick={() => {
+                      setSelectedDoorId(door.id);
+                      onEnterDoor(door);
+                    }}
+                    onMouseEnter={() => setHoveredDoorId(door.id)}
+                    onMouseLeave={() => setHoveredDoorId(null)}
+                    className="flex flex-col items-center cursor-pointer group"
+                  >
+                    {/* Arched Door Frame Container */}
+                    <div
+                      className="relative w-full aspect-[1/2.3] max-w-[135px] rounded-t-full p-1.5 transition-all duration-300"
+                      style={{
+                        backgroundColor: '#1e2330',
+                        border: `2px solid ${isOpen ? door.colorTheme.glowColor : '#2e374d'}`,
+                        boxShadow: isOpen
+                          ? `0 0 30px ${door.colorTheme.glowColor}55, inset 0 0 15px ${door.colorTheme.glowColor}33`
+                          : '0 10px 25px rgba(0,0,0,0.4)'
+                      }}
+                    >
+                      {/* Inner Portal Light / Secret Room (Visible when door swings open) */}
+                      <div
+                        className="absolute inset-1.5 rounded-t-full overflow-hidden flex flex-col items-center justify-center transition-all duration-500"
+                        style={{
+                          background: `radial-gradient(ellipse at center, ${door.colorTheme.glowColor}99 0%, #050608 85%)`
+                        }}
+                      >
+                        {/* Light beams inside doorway */}
+                        <div
+                          className="w-full h-full opacity-70 animate-pulse flex flex-col items-center justify-center text-center p-2"
+                          style={{
+                            background: `linear-gradient(180deg, transparent 0%, ${door.colorTheme.glowColor}44 70%, white 100%)`
+                          }}
+                        >
+                          <span className="text-[10px] font-mono font-bold tracking-widest text-white uppercase drop-shadow">
+                            ENTER
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 text-white mt-1 drop-shadow animate-bounce" />
+                        </div>
+                      </div>
+
+                      {/* 3D Perspective Swinging Door Leaf */}
+                      <div
+                        className="w-full h-full rounded-t-full transition-all duration-500 origin-left relative select-none"
+                        style={{
+                          backgroundColor: door.colorTheme.doorColor,
+                          border: `1.5px solid ${door.colorTheme.doorBorder}`,
+                          transform: isOpen ? 'perspective(800px) rotateY(-74deg)' : 'perspective(800px) rotateY(0deg)',
+                          boxShadow: isOpen
+                            ? '5px 5px 20px rgba(0,0,0,0.8)'
+                            : 'inset 0 2px 6px rgba(255,255,255,0.1), inset 0 -2px 6px rgba(0,0,0,0.6)'
+                        }}
+                      >
+                        {/* Wood Panel Inset - Arch Top */}
+                        <div className="absolute top-2 inset-x-2 h-1/3 rounded-t-full border border-black/40 bg-black/15 shadow-inner" />
+
+                        {/* Wood Panel Inset - Lower Bottom */}
+                        <div className="absolute bottom-3 inset-x-2 h-2/5 rounded-md border border-black/40 bg-black/15 shadow-inner" />
+
+                        {/* Golden Brass Plaque with Door Name (From video Frame 00:04 - 00:06) */}
+                        <div className="absolute top-1/2 -translate-y-6 inset-x-1.5 z-20 flex justify-center">
+                          <div
+                            className="w-full py-1 px-1 rounded border shadow-md flex items-center justify-center text-center transition-colors"
+                            style={{
+                              backgroundColor: door.colorTheme.plaqueBg,
+                              borderColor: '#eab308'
+                            }}
+                          >
+                            <span className="text-[8px] sm:text-[9px] font-mono font-extrabold tracking-tight text-amber-950 uppercase leading-none drop-shadow-sm truncate">
+                              {door.title}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Golden Brass Handle & Keyhole */}
+                        <div className="absolute top-[56%] right-2 flex flex-col items-center gap-0.5">
+                          {/* Handle plate */}
+                          <div className="w-2.5 h-5 rounded-sm bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 shadow-md border border-amber-600 flex flex-col items-center justify-center">
+                            {/* Keyhole */}
+                            <div className="w-1 h-1.5 rounded-full bg-black/80" />
+                          </div>
+                          {/* Lever handle */}
+                          <div className="w-4 h-1 rounded bg-amber-300 shadow -mt-3.5 mr-3 border border-amber-500" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Floor Door Label */}
+                    <div className="mt-3 text-center">
+                      <span
+                        className={`text-xs font-semibold tracking-wide transition-colors ${
+                          isOpen ? 'text-white' : 'text-slate-400'
+                        }`}
+                      >
+                        {door.shortTitle}
+                      </span>
+                      <div
+                        className={`h-0.5 w-6 mx-auto mt-1 rounded-full transition-all ${
+                          isOpen ? 'bg-amber-400 w-10' : 'bg-transparent'
+                        }`}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Column: Dynamic Service Breakdown Card (From video Frame 00:05 - 00:06) */}
+          <div className="lg:col-span-5">
+            <div className="bg-[#131722] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+              {/* Top ambient color edge */}
+              <div
+                className="absolute top-0 inset-x-0 h-1.5 transition-colors duration-500"
+                style={{ backgroundColor: activeDoor.colorTheme.glowColor }}
+              />
+
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  DISCIPLINE DOSSIER
+                </span>
+                <span
+                  className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold"
+                  style={{
+                    backgroundColor: `${activeDoor.colorTheme.glowColor}22`,
+                    color: activeDoor.colorTheme.glowColor
+                  }}
+                >
+                  {activeDoor.projects.length} Showcases Inside
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-white mb-3">
+                {activeDoor.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-slate-300 font-sans leading-relaxed mb-6">
+                {activeDoor.description}
+              </p>
+
+              {/* Checked specs list */}
+              <div className="space-y-2.5 mb-8">
+                {activeDoor.features.map((feat, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                    <CheckCircle2
+                      className="w-4 h-4 shrink-0 mt-0.5"
+                      style={{ color: activeDoor.colorTheme.glowColor }}
+                    />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Enter Door CTA Button */}
+              <button
+                onClick={() => onEnterDoor(activeDoor)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm text-black transition-all shadow-lg active:scale-98 group cursor-pointer"
+                style={{
+                  backgroundColor: '#ffffff'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = activeDoor.colorTheme.glowColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#ffffff';
+                }}
+              >
+                <span>Step inside {activeDoor.shortTitle}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
