@@ -41,8 +41,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
   const activeDoor = activeDoorId ? SERVICE_DOORS.find((d) => d.id === activeDoorId) || null : null;
   const displayDoor = activeDoor || inspectedDoor;
 
-  const handleDoorClick = (door: ServiceDoor) => {
-    // Direct click on door enters into the full detail view
+  const handleInitiateEnter = (door: ServiceDoor) => {
     onEnterDoor(door);
   };
 
@@ -100,10 +99,10 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                         setActiveDoorId(door.id);
                         setInspectedDoor(door);
                       } else {
-                        onEnterDoor(door);
+                        handleInitiateEnter(door);
                       }
                     }}
-                    onClick={() => handleDoorClick(door)}
+                    onClick={() => handleInitiateEnter(door)}
                     className="flex flex-col items-center cursor-pointer group"
                     title={`Click to enter ${door.title}`}
                   >
@@ -262,7 +261,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
 
                 {/* Enter Door CTA Button */}
                 <button
-                  onClick={() => onEnterDoor(displayDoor)}
+                  onClick={() => handleInitiateEnter(displayDoor)}
                   className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm text-black transition-all shadow-lg active:scale-98 group cursor-pointer"
                   style={{
                     backgroundColor: displayDoor.colorTheme.glowColor
@@ -295,12 +294,12 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
                   {SERVICE_DOORS.map((d) => (
                     <button
                       key={d.id}
-                      onClick={() => onEnterDoor(d)}
+                      onClick={() => handleInitiateEnter(d)}
                       onMouseEnter={() => {
                         setActiveDoorId(d.id);
                         setInspectedDoor(d);
                       }}
-                      className="py-2 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white border border-white/5 transition-colors text-center truncate"
+                      className="py-2 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white border border-white/5 transition-colors text-center truncate cursor-pointer"
                     >
                       {d.shortTitle}
                     </button>
@@ -311,6 +310,7 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };

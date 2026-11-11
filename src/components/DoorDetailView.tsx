@@ -21,8 +21,13 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
   onOpenContact
 }) => {
   return (
-    <div className="py-10 sm:py-16 bg-[#0b0d12] text-white min-h-screen animate-in fade-in duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-10 sm:py-16 bg-[#0b0d12] text-white min-h-screen animate-door-step-enter relative overflow-hidden">
+      {/* Ambient doorway portal glow behind user */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] rounded-full blur-[140px] opacity-20 pointer-events-none"
+        style={{ backgroundColor: door.colorTheme.glowColor }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Navigation Bar / Back button (From video Frame 00:07) */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
           <button

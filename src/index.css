@@ -130,3 +130,64 @@
 .particle {
   animation: float-particle 6s ease-in-out infinite;
 }
+
+/* First-Person Portal Walk-Through Effect */
+@keyframes doorPortalZoom {
+  0% {
+    transform: perspective(1000px) scale(0.92) translateZ(0);
+    opacity: 0.3;
+    filter: brightness(1) blur(2px);
+  }
+  25% {
+    opacity: 1;
+    filter: brightness(1.2) blur(0px);
+  }
+  65% {
+    transform: perspective(1000px) scale(2.8) translateZ(300px);
+    opacity: 1;
+    filter: brightness(2) blur(1px);
+  }
+  100% {
+    transform: perspective(1000px) scale(5.8) translateZ(700px);
+    opacity: 0;
+    filter: brightness(3.5) blur(8px);
+  }
+}
+
+.animate-door-portal-zoom {
+  animation: doorPortalZoom 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center center;
+}
+
+@keyframes portalStreak {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.2) translateY(50px);
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(3.2) translateY(-280px);
+  }
+}
+
+/* Door Detail View Smooth Entrance (After stepping into room) */
+@keyframes doorStepEnter {
+  0% {
+    opacity: 0;
+    transform: scale(1.04) translateY(18px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.animate-door-step-enter {
+  animation: doorStepEnter 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

@@ -15,27 +15,35 @@ import { ProjectInquiryModal } from './components/ProjectInquiryModal';
 import { ResumeModal } from './components/ResumeModal';
 import { WittyBioModal } from './components/WittyBioModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
+import { DoorPortalTransition } from './components/DoorPortalTransition';
 import { SERVICE_DOORS } from './data/portfolioData';
 import { ServiceDoor, ServiceId } from './types';
 
 export default function App() {
   const [activeDoor, setActiveDoor] = useState<ServiceDoor | null>(null);
+  const [portalTransitionDoor, setPortalTransitionDoor] = useState<ServiceDoor | null>(null);
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState<ServiceId | undefined>(undefined);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isWittyBioModalOpen, setIsWittyBioModalOpen] = useState(false);
 
+  const handleEnterDoor = (door: ServiceDoor) => {
+    if (portalTransitionDoor) return;
+    setPortalTransitionDoor(door);
+
+    // 700ms cinematic portal walk-through zoom & whoosh audio before mounting room
+    setTimeout(() => {
+      setActiveDoor(door);
+      setPortalTransitionDoor(null);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 700);
+  };
+
   const handleSelectDoorById = (id: ServiceId) => {
     const door = SERVICE_DOORS.find((d) => d.id === id);
     if (door) {
-      setActiveDoor(door);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      handleEnterDoor(door);
     }
-  };
-
-  const handleEnterDoor = (door: ServiceDoor) => {
-    setActiveDoor(door);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToDoors = () => {
@@ -146,6 +154,9 @@ export default function App() {
 
       {/* Floating 1-Click WhatsApp Direct Chat */}
       <WhatsAppFloatingButton />
+
+      {/* Cinematic 3D First-Person Portal Walk-Through Transition */}
+      <DoorPortalTransition door={portalTransitionDoor} />
     </div>
   );
 }
