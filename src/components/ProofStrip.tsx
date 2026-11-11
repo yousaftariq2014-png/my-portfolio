@@ -11,9 +11,9 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
   const metrics = [
     {
       icon: TrendingUp,
-      value: '$10K+ Funded',
+      value: '$50K+ Funded',
       label: 'Certified Prop Trader',
-      sub: '6 Yrs Experience · Verified Payouts',
+      sub: 'FundedNext 50K · 6 Yrs · Real Payouts',
       accent: 'text-emerald-400',
       border: 'hover:border-emerald-500/40',
       clickable: true
@@ -91,7 +91,7 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
       <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-white/5 to-emerald-500/10 border border-white/10 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-slate-300">
           <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <ShieldCheck className="w-4 h-4" /> $10K+ Funded & Verified Cash Payouts
+            <ShieldCheck className="w-4 h-4" /> $50K+ Funded & Verified Cash Payouts
           </span>
           <span className="hidden md:inline text-slate-600">·</span>
           <span className="flex items-center gap-1.5 text-cyan-300">

@@ -3,8 +3,8 @@ import { ServiceDoor, TimelineMilestone } from '../types';
 export const CREATOR_INFO = {
   name: 'Yousaf',
   fullName: 'Hafiz Yousaf Tariq',
-  title: 'Computer Science Graduate • Certified Forex Prop Trader • AI & Web Skills',
-  bio: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of disciplined Forex market analysis. Successfully funded on $10,000+ prop firm accounts (My Funded FX, Atmos Funded, Funds For Traders) with verified cash payouts (OFP Funding). Founder of Realify AI and specialist in production-grade prompt engineering.',
+  title: 'Computer Science Graduate • $50K Funded Forex Trader • AI & Web Skills',
+  bio: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of disciplined Forex market analysis. Successfully funded on $50,000+ prop firm accounts (FundedNext $50K Elite Trader, My Funded FX $10K, Atmos Funded, Funds For Traders) with verified cash payouts (OFP Funding). Founder of Realify AI and specialist in production-grade prompt engineering.',
   phone: '03114134668',
   email: 'yousaftariq2015@gmail.com',
   alternateEmail: 'yousaftariq2010@gmail.com',
@@ -12,7 +12,7 @@ export const CREATOR_INFO = {
   location: 'Lahore, Pakistan • Open for Global Remote',
   status: 'Open for Professional Roles, Funded Allocations & Projects',
   roles: [
-    'Certified Forex Prop Trader',
+    'Certified Forex Prop Trader ($50K+)',
     'Forex Market Analyst (6 Yrs)',
     'AI Video Creator (Realify AI)',
     'AI Prompt Engineer',
@@ -20,7 +20,7 @@ export const CREATOR_INFO = {
   ],
   portraitImage: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_8.22.41_PM_ad2ea340.jpeg',
   cvPdfPath: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf',
-  wittyBio: "Combining 6 years of Forex chart discipline, $10,000+ funded prop firm execution, and generative AI pipelines with computer science foundations. Whether calculating pip risk or engineering high-yield video prompts for Realify AI, precision always comes first."
+  wittyBio: "Combining 6 years of Forex chart discipline, $50,000+ funded prop firm execution (FundedNext 50K & My Funded FX), and generative AI pipelines with computer science foundations. Whether calculating pip risk or engineering high-yield video prompts for Realify AI, precision always comes first."
 };
 
 export const SERVICE_DOORS: ServiceDoor[] = [
@@ -28,10 +28,11 @@ export const SERVICE_DOORS: ServiceDoor[] = [
     id: 'forex-trading',
     title: 'Forex Market Analysis & Prop Trading',
     shortTitle: 'Forex Trading',
-    tagline: '6 years of disciplined price action, $10,000+ funded accounts & verified payouts.',
-    description: 'Six years of hands-on experience monitoring currency-pair movements, assessing potential market direction through technical analysis, and executing strategy-based trading setups with ironclad risk management. Certified funded trader across My Funded FX ($10,000), Atmos Funded, Funds For Traders, and verified OFP cash payouts.',
+    tagline: '6 years of disciplined price action, $50,000+ funded accounts & verified payouts.',
+    description: 'Six years of hands-on experience monitoring currency-pair movements, assessing potential market direction through technical analysis, and executing strategy-based trading setups with ironclad risk management. Certified funded trader across FundedNext ($50,000), My Funded FX ($10,000), Atmos Funded, Funds For Traders, and verified OFP cash payouts.',
     features: [
       '6 years of hands-on market analysis in Forex currency pairs & Gold',
+      'FundedNext Elite Trader: $50,000 (50K) Stellar 2-Step Challenge',
       'Certified Prop Trader: $10,000 Account with My Funded FX',
       'Atmos Funded Certified Trader & Funds For Traders recognition',
       'Verified real cash payouts from Overview Funding Program (OFP)',
@@ -61,9 +62,9 @@ export const SERVICE_DOORS: ServiceDoor[] = [
         tags: ['Price Action', 'Technical Analysis', 'Risk Management', 'Capital Protection', 'EUR/USD'],
         type: 'forex-terminal',
         stats: [
-          { label: 'Prop Firm Funded', value: '$10,000+' },
+          { label: 'Prop Firm Funded', value: '$50,000+' },
           { label: 'Trading Experience', value: '6 Years' },
-          { label: 'Risk Rule', value: '1% - 2% Max' }
+          { label: 'Largest Allocation', value: '$50,000' }
         ]
       },
       {
@@ -287,8 +288,14 @@ export const RESUME_DATA = {
     facebook: 'Realify AI',
     pdfUrl: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf'
   },
-  summary: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $10,000+ funded trading capital across My Funded FX, Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and skilled prompt engineer combining disciplined risk management with digital AI pipelines.',
+  summary: 'BS Computer Science graduate (University of Lahore) and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $50,000+ funded trading capital across FundedNext ($50K Elite Trader), My Funded FX ($10K), Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and skilled prompt engineer combining disciplined risk management with digital AI pipelines.',
   certifications: [
+    {
+      firm: 'FundedNext',
+      title: 'Elite Trader Certificate ($50,000 Stellar 2-Step)',
+      date: 'August 11, 2026',
+      badge: '$50K ELITE TRADER'
+    },
     {
       firm: 'My Funded FX',
       title: 'Funded Trader Certificate ($10,000 Account)',

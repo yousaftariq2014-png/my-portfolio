@@ -18,6 +18,20 @@ export interface ForexCertificate {
 
 export const FOREX_CERTIFICATES: ForexCertificate[] = [
   {
+    id: 'fundednext-50k',
+    firm: 'FundedNext',
+    title: 'FundedNext "Elite Trader" Certificate (50K Stellar)',
+    type: 'funded-certificate',
+    amount: '$50,000 (50K) Account',
+    date: '11 August 2026',
+    issuedTo: 'Hafiz Yousaf',
+    signatory: 'Abdullah Jayed, CEO FundedNext',
+    description: 'Officially recognized as a FundedNext Elite Trader after clearing Phase 1 of the Stellar 2-Step 50K Challenge, validating strong capital preservation and consistent profitability on a $50,000 account.',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-12_at_4.10.31_AM_6b854535.jpeg',
+    badge: '$50K ELITE TRADER',
+    accentColor: '#6366f1'
+  },
+  {
     id: 'my-funded-fx-10k',
     firm: 'My Funded FX',
     title: 'Funded Trader Certificate ($10,000)',
@@ -152,7 +166,7 @@ export const ForexCertificatesVault: React.FC = () => {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Funded Certificates (4)
+            Funded Certificates ({FOREX_CERTIFICATES.filter(c => c.type === 'funded-certificate').length})
           </button>
           <button
             onClick={() => setActiveFilter('payout')}
@@ -162,7 +176,7 @@ export const ForexCertificatesVault: React.FC = () => {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Real Payouts (2)
+            Real Payouts ({FOREX_CERTIFICATES.filter(c => c.type === 'payout').length})
           </button>
         </div>
       </div>

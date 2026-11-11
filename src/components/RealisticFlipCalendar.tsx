@@ -17,9 +17,9 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
   const roles = [
     {
       title: 'Certified Prop Trader',
-      subtitle: '$10K+ Funded · 6 Yrs Forex Analysis',
-      detail: 'My Funded FX · Atmos Funded · OFP Cash Payouts · Strict 1% Risk',
-      badge: '$10K FUNDED PROOF',
+      subtitle: '$50K+ Funded · 6 Yrs Forex Analysis',
+      detail: 'FundedNext (50K) · My Funded FX (10K) · OFP Real Cash Payouts',
+      badge: '$50K ELITE TRADER',
       accentColor: '#10b981'
     },
     {
