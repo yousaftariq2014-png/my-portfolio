@@ -19,9 +19,13 @@
   }
 }
 
-/* 3D Perspective and Door Physics */
+/* 3D Perspective and Door / Calendar Physics */
 .perspective-1200 {
   perspective: 1200px;
+}
+
+.perspective-1600 {
+  perspective: 1600px;
 }
 
 .perspective-800 {
@@ -34,6 +38,61 @@
 
 .backface-hidden {
   backface-visibility: hidden;
+}
+
+.origin-top {
+  transform-origin: top center;
+}
+
+/* Realistic Calendar Page Flip Upwards */
+@keyframes calendarFlipUp {
+  0% {
+    transform: rotateX(0deg);
+    filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+  }
+  30% {
+    filter: drop-shadow(0 35px 30px rgba(0, 0, 0, 0.35));
+  }
+  50% {
+    transform: rotateX(90deg) scale(0.98);
+    filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.4));
+  }
+  75% {
+    filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
+  }
+  100% {
+    transform: rotateX(180deg) scale(0.94);
+    opacity: 0;
+  }
+}
+
+/* Realistic Calendar Page Flip Downwards (for Prev) */
+@keyframes calendarFlipDown {
+  0% {
+    transform: rotateX(-180deg) scale(0.94);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(-90deg) scale(0.98);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.animate-calendar-flip-up {
+  animation: calendarFlipUp 650ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+}
+
+.animate-calendar-flip-down {
+  animation: calendarFlipDown 650ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: top center;
+  transform-style: preserve-3d;
 }
 
 /* Custom marquee */
