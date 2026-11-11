@@ -16,32 +16,32 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
 
   const roles = [
     {
+      title: 'Full-Stack Web Architect',
+      subtitle: 'High-Converting Web Apps · Sub-Second Load Times',
+      detail: 'Clean React/Next.js Code · Zero-Bug Launch · Semantic SEO & 99+ Speed',
+      badge: 'WEB ARCHITECT',
+      accentColor: '#f97316'
+    },
+    {
       title: 'Certified Prop Trader',
-      subtitle: '$50K+ Funded · 6 Yrs Forex Analysis',
-      detail: 'FundedNext (50K) · My Funded FX (10K) · OFP Real Cash Payouts',
+      subtitle: '$50K+ Funded Capital · Strict 1% Risk Rule',
+      detail: 'FundedNext (50K) · My Funded FX (10K) · Real Cash Payouts with OFP',
       badge: '$50K ELITE TRADER',
       accentColor: '#10b981'
     },
     {
-      title: 'AI Video Creator',
-      subtitle: 'Creator of Realify AI',
-      detail: 'Short-Form & Cinematic Reels · Concept-to-Video Pipelines',
-      badge: 'MEDIA BRAND',
+      title: 'AI Systems & Video Founder',
+      subtitle: 'Creator of Realify AI · Automated Media Workflows',
+      detail: 'Concept-to-Video Pipelines · High-Retention Reels & Viral Formats',
+      badge: 'AI PRODUCTION',
       accentColor: '#c084fc'
     },
     {
       title: 'AI Prompt Engineer',
-      subtitle: 'Context-Rich Architectures',
-      detail: 'Automated Research Workflows · Multimodal Scene Prompts',
-      badge: 'PROMPT LAB',
+      subtitle: 'Context-Rich Production Workflows',
+      detail: 'Autonomous Agent Prompts · Multimodal Pipelines · Precision Outputs',
+      badge: 'PROMPT SYSTEMS',
       accentColor: '#38bdf8'
-    },
-    {
-      title: 'CS Graduate & Web Dev',
-      subtitle: 'BS Computer Science (2023)',
-      detail: 'University of Lahore · Semantic Web Structures & Clean UI',
-      badge: 'CS DEGREE',
-      accentColor: '#f97316'
     }
   ];
 
