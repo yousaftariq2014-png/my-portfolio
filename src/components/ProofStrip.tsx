@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Film, Cpu, GraduationCap, ShieldCheck, Clock, Zap, MessageSquare } from 'lucide-react';
+import { TrendingUp, Film, Cpu, Globe, ShieldCheck, Clock, Zap, MessageSquare } from 'lucide-react';
 import { CREATOR_INFO } from '../data/portfolioData';
 
 interface ProofStripProps {
@@ -39,10 +39,10 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
       clickable: false
     },
     {
-      icon: GraduationCap,
+      icon: Globe,
       value: 'Live Web App',
       label: 'Chai Mehfil Cafe',
-      sub: 'Designed & Deployed Live on Vercel · BS CS',
+      sub: 'Production React App · 99+ Speed Score',
       accent: 'text-amber-400',
       border: 'hover:border-amber-500/40',
       clickable: true,

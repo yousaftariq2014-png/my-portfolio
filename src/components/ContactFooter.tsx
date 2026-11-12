@@ -114,7 +114,7 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({
                   onClick={() => onSelectDoor('web-development')}
                   className="text-slate-300 hover:text-white transition-colors"
                 >
-                  Web Development (CS)
+                  Web Engineering & Apps
                 </button>
               </li>
             </ul>

@@ -116,6 +116,41 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
                       ))}
                     </div>
 
+                    {/* Case Study Breakdown: Challenge -> Solution -> Impact */}
+                    {(proj.challenge || proj.solution) && (
+                      <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-3 my-2">
+                        <div className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
+                          <span>CASE STUDY BREAKDOWN</span>
+                        </div>
+                        {proj.challenge && (
+                          <div className="text-xs sm:text-sm leading-relaxed">
+                            <span className="font-bold text-rose-400 font-mono">The Challenge: </span>
+                            <span className="text-slate-300">{proj.challenge}</span>
+                          </div>
+                        )}
+                        {proj.solution && (
+                          <div className="text-xs sm:text-sm leading-relaxed">
+                            <span className="font-bold text-emerald-400 font-mono">Yousaf's Solution: </span>
+                            <span className="text-slate-300">{proj.solution}</span>
+                          </div>
+                        )}
+                        {proj.impactMetrics && proj.impactMetrics.length > 0 && (
+                          <div className="pt-2 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            {proj.impactMetrics.map((im, imIdx) => (
+                              <div key={imIdx} className="bg-black/40 p-2.5 rounded-xl border border-white/5">
+                                <div className="text-base sm:text-lg font-black font-display text-emerald-400 tabular-nums">
+                                  {im.value}
+                                </div>
+                                <div className="text-[10px] font-mono text-slate-400 leading-tight mt-0.5">
+                                  {im.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     {/* Stats strip */}
                     {proj.stats && (
                       <div className="grid grid-cols-3 gap-3 py-3 border-y border-white/10">

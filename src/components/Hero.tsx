@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-amber-400 font-bold">•</span>
           <span>$50,000+ FUNDED TRADING CAPITAL DISCIPLINE</span>
           <span className="text-amber-400 font-bold">•</span>
-          <span>BS COMPUTER SCIENCE GRADUATE</span>
+          <span>SOFTWARE & FULL-STACK ENGINEER</span>
           <span className="text-amber-400 font-bold">•</span>
           <span>100% CODE OWNERSHIP & ZERO LOCK-IN</span>
           <span className="text-amber-400 font-bold">•</span>
@@ -165,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-amber-400 font-bold">•</span>
           <span>$50,000+ FUNDED TRADING CAPITAL DISCIPLINE</span>
           <span className="text-amber-400 font-bold">•</span>
-          <span>BS COMPUTER SCIENCE GRADUATE</span>
+          <span>SOFTWARE & FULL-STACK ENGINEER</span>
           <span className="text-amber-400 font-bold">•</span>
         </div>
       </div>

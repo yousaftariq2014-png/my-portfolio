@@ -14,6 +14,9 @@ export interface Project {
   type?: 'forex-terminal' | 'video-studio' | 'prompt-studio' | 'web-demo' | 'desktop' | 'phone' | 'game' | 'dice';
   stats?: { label: string; value: string }[];
   promptTemplate?: string;
+  challenge?: string;
+  solution?: string;
+  impactMetrics?: { label: string; value: string }[];
 }
 
 export interface ServiceDoor {

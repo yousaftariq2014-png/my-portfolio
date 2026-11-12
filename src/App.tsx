@@ -10,6 +10,7 @@ import { ProofStrip } from './components/ProofStrip';
 import { DoorsSection } from './components/DoorsSection';
 import { DoorDetailView } from './components/DoorDetailView';
 import { TimelineSection } from './components/TimelineSection';
+import { ClientGuaranteesSection } from './components/ClientGuaranteesSection';
 import { ContactFooter } from './components/ContactFooter';
 import { ProjectInquiryModal } from './components/ProjectInquiryModal';
 import { ResumeModal } from './components/ResumeModal';
@@ -125,6 +126,12 @@ export default function App() {
 
             {/* Signature Feature: 3D Doors */}
             <DoorsSection onEnterDoor={handleEnterDoor} />
+
+            {/* Client Peace-of-Mind Charter (Risk Reversals) */}
+            <ClientGuaranteesSection
+              onStartProject={() => handleOpenContact()}
+              onBookCall={() => setIsStrategyCallModalOpen(true)}
+            />
 
             {/* Time Machine: "Let's go back in time" */}
             <TimelineSection />
