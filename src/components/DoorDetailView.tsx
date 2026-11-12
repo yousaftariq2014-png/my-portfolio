@@ -30,21 +30,21 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Navigation Bar / Back button (From video Frame 00:07) */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10 gap-2">
           <button
             onClick={onBackToDoors}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-semibold transition-all border border-white/10 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-semibold transition-all border border-white/10 active:scale-95 cursor-pointer shrink-0"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 shrink-0" />
             <span>Back to the doors</span>
           </button>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-slate-400 truncate">
             <span
-              className="w-2 h-2 rounded-full"
+              className="w-2 h-2 rounded-full shrink-0"
               style={{ backgroundColor: door.colorTheme.glowColor }}
             />
-            <span className="uppercase">{door.shortTitle} DOSSIER</span>
+            <span className="uppercase truncate">{door.shortTitle} DOSSIER</span>
           </div>
         </div>
 

@@ -111,26 +111,26 @@ export const ProofStrip: React.FC<ProofStripProps> = ({
       </div>
 
       {/* Trust & Guarantee Banner */}
-      <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-white/5 to-emerald-500/10 border border-white/10 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-slate-300">
+      <div className="mt-4 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-white/5 to-emerald-500/10 border border-white/10 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs font-mono">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 sm:gap-6 text-slate-300 text-[11px] sm:text-xs">
           <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <ShieldCheck className="w-4 h-4" /> $50K+ Funded & Verified Cash Payouts
+            <ShieldCheck className="w-4 h-4 shrink-0" /> $50K+ Funded & Verified Cash Payouts
           </span>
           <span className="hidden md:inline text-slate-600">·</span>
           <span className="flex items-center gap-1.5 text-cyan-300">
-            <Clock className="w-4 h-4" /> &lt; 24h Project Turnaround
+            <Clock className="w-4 h-4 shrink-0" /> &lt; 24h Project Turnaround
           </span>
           <span className="hidden md:inline text-slate-600">·</span>
           <span className="flex items-center gap-1.5 text-amber-300">
-            <Zap className="w-4 h-4" /> Free 15-Min Strategy Consult
+            <Zap className="w-4 h-4 shrink-0" /> Free 15-Min Strategy Consult
           </span>
         </div>
 
         <button
           onClick={onOpenConsultation}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-black hover:bg-amber-400 font-bold text-xs transition-transform active:scale-95 shadow-md shrink-0 cursor-pointer"
+          className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-white text-black hover:bg-amber-400 font-bold text-xs transition-transform active:scale-95 shadow-md w-full sm:w-auto shrink-0 cursor-pointer"
         >
-          <MessageSquare className="w-3.5 h-3.5" />
+          <MessageSquare className="w-3.5 h-3.5 shrink-0" />
           <span>Book Free Consultation</span>
         </button>
       </div>

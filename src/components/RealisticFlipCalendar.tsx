@@ -145,24 +145,26 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
       <div className="relative rounded-3xl p-3 bg-gradient-to-b from-[#222834] via-[#161a22] to-[#0c0e13] border-2 border-[#333d52] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]">
         
         {/* Desk Calendar Stand Header Bar */}
-        <div className="flex items-center justify-between px-4 py-1.5 mb-2 border-b border-white/10 text-[11px] font-mono text-slate-400">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span className="font-bold tracking-wider text-slate-200">DESK CALENDAR · 2026</span>
+        <div className="flex items-center justify-between px-3 sm:px-4 py-1.5 mb-2 border-b border-white/10 text-[10px] sm:text-[11px] font-mono text-slate-400 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
+            <span className="font-bold tracking-wider text-slate-200 truncate">
+              CALENDAR · 2026
+            </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Audio Toggle */}
             <button
               onClick={() => setSoundEnabled(!soundEnabled)}
-              className="p-1 rounded text-slate-400 hover:text-white transition-colors"
+              className="p-1 rounded text-slate-400 hover:text-white transition-colors cursor-pointer"
               title={soundEnabled ? 'Mute paper turn sound' : 'Enable paper turn sound'}
             >
               {soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-amber-400" /> : <VolumeX className="w-3.5 h-3.5" />}
             </button>
 
             {/* Stepper Buttons */}
-            <div className="flex items-center gap-1 bg-white/5 rounded-md p-0.5 border border-white/10">
+            <div className="flex items-center gap-1 bg-white/5 rounded-md p-0.5 border border-white/10 shrink-0">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -174,7 +176,7 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
-              <span className="text-[10px] font-mono px-1.5 text-amber-400">
+              <span className="text-[10px] font-mono px-1 sm:px-1.5 text-amber-400 whitespace-nowrap">
                 0{currentIndex + 1} / 0{roles.length}
               </span>
               <button
@@ -193,18 +195,18 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
         </div>
 
         {/* Realistic Metallic Twin-Wire Coil Binder (Top of pages) */}
-        <div className="relative z-30 flex justify-between px-6 -mb-3 pointer-events-none">
-          {[...Array(14)].map((_, i) => (
-            <div key={i} className="flex flex-col items-center">
+        <div className="relative z-30 flex justify-between px-3 sm:px-6 -mb-3 pointer-events-none overflow-hidden max-w-full">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="flex flex-col items-center shrink-0">
               {/* Top metallic loop */}
               <div
-                className="w-2.5 h-6 rounded-full bg-gradient-to-r from-slate-500 via-white to-slate-600 shadow-md border border-slate-700"
+                className="w-2 sm:w-2.5 h-5 sm:h-6 rounded-full bg-gradient-to-r from-slate-500 via-white to-slate-600 shadow-md border border-slate-700"
                 style={{
                   boxShadow: '0 4px 6px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.9)'
                 }}
               />
               {/* Punched hole cutout shadow */}
-              <div className="w-2 h-2 rounded-full bg-black/80 -mt-1 shadow-inner border border-black/40" />
+              <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-black/80 -mt-1 shadow-inner border border-black/40" />
             </div>
           ))}
         </div>
@@ -212,44 +214,44 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
         {/* 3D Perspective Flip Container */}
         <div
           onClick={flipToNext}
-          className="relative w-full min-h-[175px] sm:min-h-[190px] rounded-2xl cursor-pointer perspective-1600 transform-style-3d overflow-visible"
+          className="relative w-full min-h-[185px] sm:min-h-[195px] rounded-2xl cursor-pointer perspective-1600 transform-style-3d overflow-visible"
         >
           {/* BASE PAGE (UNDERNEATH) - Always shows the target currentRole */}
           <div
-            className="w-full h-full bg-[#fdfdfd] text-slate-900 rounded-2xl p-6 sm:p-7 pt-6 shadow-xl border border-slate-300 relative overflow-hidden flex flex-col justify-between"
+            className="w-full h-full bg-[#fdfdfd] text-slate-900 rounded-2xl p-4 sm:p-6 sm:p-7 pt-5 sm:pt-6 shadow-xl border border-slate-300 relative overflow-hidden flex flex-col justify-between"
             style={{
               backgroundImage: 'radial-gradient(#e2e8f0 1.2px, transparent 1.2px)',
               backgroundSize: '16px 16px'
             }}
           >
             {/* Perforated tear line below binder */}
-            <div className="absolute top-2.5 left-4 right-4 border-b border-dashed border-slate-300/80 pointer-events-none" />
+            <div className="absolute top-2.5 left-3 right-3 sm:left-4 sm:right-4 border-b border-dashed border-slate-300/80 pointer-events-none" />
 
             {/* Top row metadata */}
             <div className="flex items-center justify-between pt-1">
-              <span className="text-[11px] font-mono font-bold tracking-wider text-rose-600 uppercase flex items-center gap-1">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-rose-600 uppercase flex items-center gap-1">
                 <span>●</span> {currentRole.badge}
               </span>
-              <span className="text-[11px] font-mono font-semibold text-slate-400">
+              <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-slate-400">
                 PAGE 0{currentIndex + 1}
               </span>
             </div>
 
             {/* Role Title */}
             <div className="my-2">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black font-display tracking-tight text-slate-900 leading-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black font-display tracking-tight text-slate-900 leading-tight">
                 {currentRole.title}
               </h3>
-              <p className="text-xs sm:text-sm font-mono font-semibold text-slate-600 mt-1">
+              <p className="text-[11px] sm:text-xs md:text-sm font-mono font-semibold text-slate-600 mt-1">
                 {currentRole.subtitle}
               </p>
             </div>
 
             {/* Bottom detail row */}
-            <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-slate-500">
-              <span className="truncate max-w-[80%]">{currentRole.detail}</span>
+            <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-500 gap-2">
+              <span className="truncate max-w-[70%] sm:max-w-[80%]">{currentRole.detail}</span>
               <span className="text-amber-600 font-bold shrink-0 flex items-center gap-1">
-                Tap to flip up ⤸
+                Flip up ⤸
               </span>
             </div>
 
@@ -265,7 +267,7 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
           {/* FLIPPING PAGE (TOP LEAF) - Only active during isFlipping */}
           {isFlipping && (
             <div
-              className={`absolute inset-0 w-full h-full rounded-2xl p-6 sm:p-7 pt-6 bg-[#f8fafc] text-slate-900 border border-slate-300 shadow-2xl flex flex-col justify-between z-20 pointer-events-none origin-top ${
+              className={`absolute inset-0 w-full h-full rounded-2xl p-4 sm:p-6 sm:p-7 pt-5 sm:pt-6 bg-[#f8fafc] text-slate-900 border border-slate-300 shadow-2xl flex flex-col justify-between z-20 pointer-events-none origin-top ${
                 flipDirection === 'up' ? 'animate-calendar-flip-up' : 'animate-calendar-flip-down'
               }`}
               style={{
@@ -275,7 +277,7 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
               }}
             >
               {/* Perforated tear line */}
-              <div className="absolute top-2.5 left-4 right-4 border-b border-dashed border-slate-300/80 pointer-events-none" />
+              <div className="absolute top-2.5 left-3 right-3 sm:left-4 sm:right-4 border-b border-dashed border-slate-300/80 pointer-events-none" />
 
               {/* Dynamic Curvature Gradient Shadow on the lifting paper */}
               <div
@@ -288,26 +290,26 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
 
               {/* Old Role Content being flipped up */}
               <div className="flex items-center justify-between pt-1 relative z-10">
-                <span className="text-[11px] font-mono font-bold tracking-wider text-rose-600 uppercase flex items-center gap-1">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-rose-600 uppercase flex items-center gap-1">
                   <span>●</span> {oldRole.badge}
                 </span>
-                <span className="text-[11px] font-mono font-semibold text-slate-400">
+                <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-slate-400">
                   PAGE 0{prevIndex + 1}
                 </span>
               </div>
 
               <div className="my-2 relative z-10">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black font-display tracking-tight text-slate-900 leading-tight">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black font-display tracking-tight text-slate-900 leading-tight">
                   {oldRole.title}
                 </h3>
-                <p className="text-xs sm:text-sm font-mono font-semibold text-slate-600 mt-1">
+                <p className="text-[11px] sm:text-xs md:text-sm font-mono font-semibold text-slate-600 mt-1">
                   {oldRole.subtitle}
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-slate-500 relative z-10">
-                <span className="truncate max-w-[80%]">{oldRole.detail}</span>
-                <span className="text-slate-400">Turning page...</span>
+              <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-500 relative z-10 gap-2">
+                <span className="truncate max-w-[70%] sm:max-w-[80%]">{oldRole.detail}</span>
+                <span className="text-slate-400 shrink-0">Turning...</span>
               </div>
             </div>
           )}
