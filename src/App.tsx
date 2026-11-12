@@ -123,6 +123,7 @@ export default function App() {
               onViewForexProof={() => handleSelectDoorById('forex-trading')}
               onViewWebProof={() => handleSelectDoorById('web-development')}
               onViewAcademicProof={() => handleSelectDoorById('academic-writing')}
+              onViewVideoProof={() => handleSelectDoorById('ai-video')}
             />
 
             {/* Signature Feature: 3D Doors */}

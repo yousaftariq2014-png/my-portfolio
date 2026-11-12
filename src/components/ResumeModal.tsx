@@ -92,9 +92,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 {RESUME_DATA.contact.email}
               </span>
               <span>·</span>
-              <span className="text-purple-400 font-semibold">
-                Facebook: {RESUME_DATA.contact.facebook}
-              </span>
+              <a
+                href="https://www.facebook.com/share/19kLKCKURK/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-purple-400 hover:text-purple-300 font-semibold hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <span>Facebook: {RESUME_DATA.contact.facebook}</span>
+                <span className="text-[10px]">↗</span>
+              </a>
             </div>
           </div>
         </div>

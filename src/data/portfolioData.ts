@@ -4,11 +4,12 @@ export const CREATOR_INFO = {
   name: 'Yousaf',
   fullName: 'Hafiz Yousaf Tariq',
   title: 'Full-Stack Software Engineer • $50K Funded Trader • AI Systems Architect',
-  bio: 'Software engineer and Certified Prop Trader with six years of disciplined market execution. Successfully funded on $50,000+ prop firm accounts (FundedNext $50K Elite Trader, My Funded FX $10K, Atmos Funded, Funds For Traders) with verified cash payouts (OFP Funding). Founder of Realify AI and builder of high-performance modern web platforms.',
+  bio: 'Software engineer and Certified Prop Trader with six years of disciplined market execution. Successfully funded on $50,000+ prop firm accounts (FundedNext $50K Elite Trader, My Funded FX $10K, Atmos Funded, Funds For Traders) with verified cash payouts (OFP Funding). Founder of Realify AI (organically grown to 525+ followers through AI video generation) and builder of high-performance modern web platforms.',
   phone: '03114134668',
   email: 'yousaftariq2015@gmail.com',
   alternateEmail: 'yousaftariq2010@gmail.com',
   facebookPage: 'Realify AI',
+  facebookUrl: 'https://www.facebook.com/share/19kLKCKURK/',
   location: 'Lahore, Pakistan • Open for Global Remote',
   status: 'Open for Professional Roles, Funded Allocations & Projects',
   roles: [
@@ -16,7 +17,7 @@ export const CREATOR_INFO = {
     'Academic & Business Researcher',
     'Certified Forex Prop Trader ($50K+)',
     'Forex Market Analyst (6 Yrs)',
-    'AI Video Creator (Realify AI)',
+    'AI Video Creator & Realify AI Founder',
     'AI Prompt Engineer'
   ],
   portraitImage: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_8.22.41_PM_ad2ea340.jpeg',
@@ -101,9 +102,11 @@ export const SERVICE_DOORS: ServiceDoor[] = [
     title: 'AI Video Creation (Realify AI)',
     shortTitle: 'AI Video',
     tagline: 'Turning written prompts into viral short-form and promotional video content.',
-    description: 'Creator of Realify AI. Transforming creative concepts and detailed written prompts into dynamic video content using cutting-edge AI tools. Planning video ideas, generating AI-assisted scenes, and crafting compelling storytelling reels.',
+    description: 'Creator and founder of Realify AI. Grew an active organic audience of 525+ followers purely through AI-generated videos, cinematic short-form storytelling, and custom prompt workflows. Transforming creative concepts into dynamic, high-retention video content.',
     features: [
-      'Founder and Creator of Facebook video channel: Realify AI',
+      'Founder and Creator of Facebook video page: Realify AI (525+ followers)',
+      '100% Organic Page Growth: cultivated from scratch purely via AI video generation',
+      'Official Facebook Channel: https://www.facebook.com/share/19kLKCKURK/',
       'Turn concepts and written prompts into video content using AI tools',
       'Plan video ideas, prepare prompts and generate scenes for short-form reels',
       'Promotional, commercial and cinematic storytelling content generation',
@@ -120,30 +123,33 @@ export const SERVICE_DOORS: ServiceDoor[] = [
       {
         id: 'realify-ai-showcase',
         title: 'Realify AI Video Production Suite',
-        subtitle: 'Short-Form, Promotional & Storytelling Content',
+        subtitle: 'Official Facebook Page · 525+ Followers Grown with AI Videos',
         category: 'AI VIDEO GENERATION • REALIFY AI',
-        description: 'All AI-generated videos created and published on the official Realify AI Facebook page. Demonstrates end-to-end prompt engineering, scene composition, camera motion orchestration, and viral narrative pacing.',
+        description: 'All AI-generated videos created and published on the official Realify AI Facebook page. Grew the page completely organically from zero to 525+ followers using custom prompt engineering, scene composition, camera motion orchestration, and viral storytelling.',
         highlights: [
+          'Official Facebook Page: https://www.facebook.com/share/19kLKCKURK/',
+          '525+ organic followers grown purely via AI video generation workflows',
           'Interactive video player with scene switcher and prompt inspection',
           'Hyper-realistic scene generation across cinematic sci-fi and historical narratives',
           'Camera direction: dolly tracking, anamorphic lenses, and volumetric lighting',
-          'Published portfolio on Facebook: Realify AI'
+          'Verified live channel proof: View Realify AI on Facebook'
         ],
-        challenge: 'Manual video creation pipelines take 6-10 hours per reel, suffering from inconsistent visual tone and poor algorithm retention.',
-        solution: 'Architected automated prompt-to-scene workflows and visual pacing templates that generate cinematic, high-retention short-form content in under 30 minutes.',
+        challenge: 'Building an engaged social media video presence typically takes hundreds of manual animation hours, expensive cameras, and high production overhead.',
+        solution: 'Architected automated prompt-to-scene workflows and visual pacing templates that generate cinematic, high-retention short-form content and organically grew Realify AI to 525+ followers.',
         impactMetrics: [
-          { value: '70%', label: 'Turnaround Time Saved' },
-          { value: '100K+', label: 'Cumulative Organic Views' },
+          { value: '525+', label: 'Organic Followers' },
+          { value: '100%', label: 'AI Video Generated' },
           { value: '4K', label: 'Cinematic AI Resolution' }
         ],
-        tags: ['AI Video Generation', 'Realify AI', 'Short-Form Video', 'Prompt-to-Scene', 'Storytelling'],
+        tags: ['Realify AI', 'Facebook Channel', '525+ Followers', 'AI Video Generation', 'Short-Form Video', 'Prompt-to-Scene', 'Storytelling'],
         type: 'video-studio',
-        externalUrl: 'https://facebook.com',
+        image: '/assets/aistudio/_5C79D7B0-8D94-41BC-B86F-CA7D11543B50__67ab51e0.png',
+        externalUrl: 'https://www.facebook.com/share/19kLKCKURK/',
         caseStudyUrl: '#realify-ai',
         stats: [
           { label: 'Brand', value: 'Realify AI' },
-          { label: 'Format', value: 'Shorts & Reels' },
-          { label: 'Resolution', value: '4K AI Generated' }
+          { label: 'Followers', value: '525+ Organic' },
+          { label: 'Page Link', value: 'fb.com/share/19kLKCKURK' }
         ]
       }
     ]
@@ -318,10 +324,10 @@ export const TIMELINE_MILESTONES: TimelineMilestone[] = [
     achievements: [
       'Successfully navigated currency market cycles with disciplined capital protection and patience',
       'Designed and deployed Chai Mehfil Cafe (chaimehfil-flame.vercel.app) production web application',
-      'Built and scaled Realify AI video channels with 100% AI-generated short-form content',
+      'Built and organically scaled Realify AI Facebook page (525+ followers) with 100% AI-generated short-form video content: https://www.facebook.com/share/19kLKCKURK/',
       'Engineered structured prompt workflows for high-accuracy video scene generation'
     ],
-    skills: ['Market Analysis', 'Technical Analysis', 'Risk Management', 'Web Development', 'Chai Mehfil Cafe', 'AI Video Creation', 'Realify AI']
+    skills: ['Market Analysis', 'Technical Analysis', 'Risk Management', 'Web Development', 'Chai Mehfil Cafe', 'AI Video Creation', 'Realify AI (525+ Followers)']
   },
   {
     year: 2023,
@@ -371,10 +377,11 @@ export const RESUME_DATA = {
   contact: {
     phone: '03114134668',
     email: 'yousaftariq2015@gmail.com',
-    facebook: 'Realify AI',
+    facebook: 'Realify AI (525+ Followers)',
+    facebookUrl: 'https://www.facebook.com/share/19kLKCKURK/',
     pdfUrl: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf'
   },
-  summary: 'Full-stack software engineer and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $50,000+ funded trading capital across FundedNext ($50K Elite Trader), My Funded FX ($10K), Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI and web developer behind Chai Mehfil Cafe (chaimehfil-flame.vercel.app).',
+  summary: 'Full-stack software engineer and Certified Prop Trader with six years of hands-on experience in the Forex market. Successfully cleared prop firm evaluations and managed $50,000+ funded trading capital across FundedNext ($50K Elite Trader), My Funded FX ($10K), Atmos Funded, and Funds For Traders, earning verified cash payouts with OFP Funding. Creator of Realify AI (525+ organic followers on Facebook via AI video creation) and web developer behind Chai Mehfil Cafe (chaimehfil-flame.vercel.app).',
   certifications: [
     {
       firm: 'FundedNext',
@@ -421,11 +428,11 @@ export const RESUME_DATA = {
   ],
   digitalSkills: [
     {
-      area: 'AI Video Creation',
+      area: 'AI Video Creation & Brand Growth',
       bullets: [
         'Turn concepts and written prompts into video content using AI-powered tools.',
         'Plan video ideas, prepare prompts and generate AI-assisted scenes for short-form, promotional and storytelling content.',
-        'Created all AI-generated videos published on my Facebook page, Realify AI: View video portfolio.'
+        'Founded and organically scaled Realify AI on Facebook to 525+ followers purely through AI video production: https://www.facebook.com/share/19kLKCKURK/'
       ]
     },
     {

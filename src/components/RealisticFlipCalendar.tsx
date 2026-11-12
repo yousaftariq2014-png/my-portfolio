@@ -31,9 +31,9 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
     },
     {
       title: 'AI Systems & Video Founder',
-      subtitle: 'Creator of Realify AI · Automated Media Workflows',
-      detail: 'Concept-to-Video Pipelines · High-Retention Reels & Viral Formats',
-      badge: 'AI PRODUCTION',
+      subtitle: 'Creator of Realify AI · 525+ Organic Facebook Followers',
+      detail: 'Concept-to-Video Pipelines · Grown 100% Organically · fb.com/share/19kLKCKURK',
+      badge: 'REALIFY AI FOUNDER',
       accentColor: '#c084fc'
     },
     {

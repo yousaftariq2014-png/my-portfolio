@@ -7,13 +7,15 @@ interface ProofStripProps {
   onViewForexProof?: () => void;
   onViewWebProof?: () => void;
   onViewAcademicProof?: () => void;
+  onViewVideoProof?: () => void;
 }
 
 export const ProofStrip: React.FC<ProofStripProps> = ({
   onOpenConsultation,
   onViewForexProof,
   onViewWebProof,
-  onViewAcademicProof
+  onViewAcademicProof,
+  onViewVideoProof
 }) => {
   const metrics = [
     {
@@ -38,12 +40,13 @@ export const ProofStrip: React.FC<ProofStripProps> = ({
     },
     {
       icon: Film,
-      value: 'Realify AI',
-      label: 'AI Video Production',
-      sub: 'Short-Form Narrative & Cinematic Prompts',
+      value: '525+ Fans',
+      label: 'Realify AI Channel',
+      sub: '525+ Followers · 100% Organic AI Growth',
       accent: 'text-purple-400',
       border: 'hover:border-purple-500/40',
-      clickable: false
+      clickable: true,
+      action: 'video'
     },
     {
       icon: Cpu,
@@ -82,6 +85,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({
                   onViewWebProof();
                 } else if (m.action === 'academic' && onViewAcademicProof) {
                   onViewAcademicProof();
+                } else if (m.action === 'video' && onViewVideoProof) {
+                  onViewVideoProof();
                 }
               }}
               className={`p-5 rounded-2xl bg-[#121622]/90 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-1 ${m.border} group ${m.clickable ? 'cursor-pointer hover:border-amber-400/50' : ''}`}
