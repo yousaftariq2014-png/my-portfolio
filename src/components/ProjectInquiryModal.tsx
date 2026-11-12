@@ -28,10 +28,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
   if (!isOpen) return null;
 
   const services = [
-    { id: 'forex-trading', label: 'Forex Market Analysis & Strategy' },
+    { id: 'web-development', label: 'Web Engineering & UI Platforms' },
+    { id: 'academic-writing', label: 'Academic & Business Research Writing' },
     { id: 'ai-video', label: 'AI Video Creation (Realify AI)' },
     { id: 'prompt-engineering', label: 'AI Prompt Engineering & Workflows' },
-    { id: 'web-development', label: 'Web Development & UI' }
+    { id: 'forex-trading', label: 'Forex Market Analysis & Strategy' }
   ];
 
   const budgetOptions = ['$3k – $5k', '$5k – $10k', '$10k – $25k', '$25k+'];

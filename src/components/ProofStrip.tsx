@@ -1,14 +1,20 @@
 import React from 'react';
-import { TrendingUp, Film, Cpu, Globe, ShieldCheck, Clock, Zap, MessageSquare } from 'lucide-react';
+import { TrendingUp, Film, Cpu, Globe, BookOpen, ShieldCheck, Clock, Zap, MessageSquare } from 'lucide-react';
 import { CREATOR_INFO } from '../data/portfolioData';
 
 interface ProofStripProps {
   onOpenConsultation: () => void;
   onViewForexProof?: () => void;
   onViewWebProof?: () => void;
+  onViewAcademicProof?: () => void;
 }
 
-export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onViewForexProof, onViewWebProof }) => {
+export const ProofStrip: React.FC<ProofStripProps> = ({
+  onOpenConsultation,
+  onViewForexProof,
+  onViewWebProof,
+  onViewAcademicProof
+}) => {
   const metrics = [
     {
       icon: TrendingUp,
@@ -19,6 +25,16 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
       border: 'hover:border-emerald-500/40',
       clickable: true,
       action: 'forex'
+    },
+    {
+      icon: BookOpen,
+      value: '47 Pages',
+      label: 'Academic Research',
+      sub: 'BPP & Canterbury · 0% AI Plagiarism',
+      accent: 'text-sky-400',
+      border: 'hover:border-sky-500/40',
+      clickable: true,
+      action: 'academic'
     },
     {
       icon: Film,
@@ -52,8 +68,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 mb-12 sm:mb-16 relative z-20">
-      {/* 4-Column Credibility Matrix */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* 5-Column Credibility Matrix */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
         {metrics.map((m, idx) => {
           const Icon = m.icon;
           return (
@@ -64,6 +80,8 @@ export const ProofStrip: React.FC<ProofStripProps> = ({ onOpenConsultation, onVi
                   onViewForexProof();
                 } else if (m.action === 'web' && onViewWebProof) {
                   onViewWebProof();
+                } else if (m.action === 'academic' && onViewAcademicProof) {
+                  onViewAcademicProof();
                 }
               }}
               className={`p-5 rounded-2xl bg-[#121622]/90 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:-translate-y-1 ${m.border} group ${m.clickable ? 'cursor-pointer hover:border-amber-400/50' : ''}`}

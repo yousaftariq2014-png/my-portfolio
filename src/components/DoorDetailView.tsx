@@ -8,6 +8,7 @@ import { InteractiveVideoReel } from './InteractiveVideoReel';
 import { InteractivePromptStudio } from './InteractivePromptStudio';
 import { PromptComparisonWidget } from './PromptComparisonWidget';
 import { ForexCertificatesVault } from './ForexCertificatesVault';
+import { InteractiveAssignmentViewer } from './InteractiveAssignmentViewer';
 
 interface DoorDetailViewProps {
   door: ServiceDoor;
@@ -60,16 +61,22 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
           </p>
         </div>
 
-        {/* Project List */}
-        <div className="space-y-16 sm:space-y-24">
-          {door.projects.map((proj, idx) => {
-            const isEven = idx % 2 === 0;
+        {/* Academic Writing Door: Render Full Interactive Assignment Viewer */}
+        {door.id === 'academic-writing' ? (
+          <div className="space-y-12">
+            <InteractiveAssignmentViewer />
+          </div>
+        ) : (
+          /* Project List */
+          <div className="space-y-16 sm:space-y-24">
+            {door.projects.map((proj, idx) => {
+              const isEven = idx % 2 === 0;
 
-            return (
-              <div
-                key={proj.id}
-                className="bg-[#121620] border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden"
-              >
+              return (
+                <div
+                  key={proj.id}
+                  className="bg-[#121620] border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden"
+                >
                 {/* Subtle top accent gradient */}
                 <div
                   className="absolute top-0 inset-x-0 h-1"
@@ -286,6 +293,7 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
             );
           })}
         </div>
+        )}
 
         {/* Verified Forex Certificates & Payouts Vault */}
         {door.id === 'forex-trading' && (
@@ -308,7 +316,7 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black hover:bg-amber-400 font-bold text-sm transition-all shadow-xl active:scale-95 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Return to All 4 Doors</span>
+            <span>Return to All Doors</span>
           </button>
         </div>
       </div>

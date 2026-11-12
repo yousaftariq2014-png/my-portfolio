@@ -13,6 +13,7 @@ export const CREATOR_INFO = {
   status: 'Open for Professional Roles, Funded Allocations & Projects',
   roles: [
     'Full-Stack Web Architect',
+    'Academic & Business Researcher',
     'Certified Forex Prop Trader ($50K+)',
     'Forex Market Analyst (6 Yrs)',
     'AI Video Creator (Realify AI)',
@@ -20,7 +21,7 @@ export const CREATOR_INFO = {
   ],
   portraitImage: '/assets/aistudio/WhatsApp_Image_2026-11-10_at_8.22.41_PM_ad2ea340.jpeg',
   cvPdfPath: '/assets/aistudio/Yousaf_Tariq_CV_Premium_42a13076.pdf',
-  wittyBio: "Combining 6 years of Forex chart discipline, $50,000+ funded prop firm execution (FundedNext 50K & My Funded FX), and generative AI pipelines with software engineering rigor. Whether calculating pip risk or engineering high-yield video prompts for Realify AI, precision always comes first."
+  wittyBio: "Combining 6 years of Forex chart discipline, $50,000+ funded prop firm execution, academic research rigor across UK university coursework (BPP Business School & Canterbury Christ Church), and full-stack software development. Whether analyzing Scope 3 ESG emissions, calculating pip risk, or building high-converting web apps, precision always comes first."
 };
 
 export const SERVICE_DOORS: ServiceDoor[] = [
@@ -247,6 +248,58 @@ export const SERVICE_DOORS: ServiceDoor[] = [
           { label: 'Platform', value: 'Vercel Live' },
           { label: 'Rating', value: '4.9 ★ (1.5K+)' },
           { label: 'Role', value: 'UI/UX & Frontend' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'academic-writing',
+    title: 'Academic & Business Research Writing',
+    shortTitle: 'Academic Writing',
+    tagline: 'High-distinction academic coursework, corporate consultancy reports & rigorous empirical research.',
+    description: 'Expert research writer specializing in university-level business consultancy projects, destination management dissertations, and analytical essays for UK & international institutions (BPP University, Canterbury Christ Church University). Flawless Harvard and APA referencing, strict zero-plagiarism discipline, and empirical framework deployment (PESTLE, Porter’s Five Forces, SWOT, Mendelow’s Matrix, Butler’s TALC).',
+    features: [
+      'Master-level corporate consultancy projects & business research dissertations',
+      'Original, Turnitin-proof content with 0% AI plagiarism guarantee',
+      'Advanced frameworks: PESTLE, Porter’s Five Forces, SWOT, Mendelow’s Matrix & TALC',
+      'Rigorous peer-reviewed academic referencing (Harvard & APA styles)',
+      'Proven track record with UK universities (BPP Business School & Canterbury Christ Church)'
+    ],
+    colorTheme: {
+      doorColor: '#172033',
+      doorBorder: '#273859',
+      glowColor: '#38bdf8',
+      accentColor: '#0284c7',
+      plaqueBg: '#b89047'
+    },
+    projects: [
+      {
+        id: 'academic-assignments-vault',
+        title: 'Verified Academic Coursework & Consultancy Portfolio',
+        subtitle: 'BPP Business School & Canterbury Christ Church University',
+        category: 'ACADEMIC WRITING • 47 PAGES OF PROOF',
+        description: 'Two full-length, high-distinction verified academic papers demonstrating master-level research, framework applications, and exhaustive empirical data synthesis. Includes live interactive PDF previews and downloadable full files.',
+        highlights: [
+          'Assignment 1: Business Consultancy Project at Nike Inc. (BPP Business School, 28 pages, 4,800+ words)',
+          'Assignment 2: Destination Management & Sustainable Tourism Development (Canterbury Christ Church, 19 pages, 3,500+ words)',
+          'Complete theoretical modeling: Mendelow’s Matrix, PESTLE, Porter’s Five Forces, SWOT, TALC Curve & Doxey’s Irridex',
+          'Over 60+ combined academic citations, data appendices, and empirical figures'
+        ],
+        challenge: 'Students and corporate professionals face steep academic standards, harsh anti-plagiarism filters, and complex analytical framework requirements with tight turnaround deadlines.',
+        solution: 'Delivers end-to-end distinction-grade research papers with verified peer-reviewed sources, structured argumentation, custom empirical diagrams, and complete original drafting.',
+        impactMetrics: [
+          { value: '47', label: 'Total Verified Pages' },
+          { value: '0%', label: 'Plagiarism / AI Score' },
+          { value: '75%+', label: 'Distinction Standard' }
+        ],
+        tags: ['Academic Writing', 'Business Consultancy', 'Nike ESG', 'Tourism Management', 'Harvard Referencing', 'Turnitin Proof', 'PESTLE & SWOT'],
+        type: 'pdf-viewer',
+        pdfUrl: '/assets/aistudio/Business_Consultancy_Project_5a7b0817.pdf',
+        pagesCount: 47,
+        stats: [
+          { label: 'Verified Proof', value: '2 Full PDFs' },
+          { label: 'Total Pages', value: '47 Pages' },
+          { label: 'Quality Standard', value: 'Distinction' }
         ]
       }
     ]

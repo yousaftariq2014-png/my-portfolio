@@ -147,6 +147,8 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="animate-marquee flex items-center gap-8 text-xs font-mono tracking-widest text-slate-300 uppercase">
           <span>HIGH-CONVERTING REACT & WEB APPS</span>
           <span className="text-amber-400 font-bold">•</span>
+          <span>ACADEMIC & CONSULTANCY RESEARCH WRITING</span>
+          <span className="text-amber-400 font-bold">•</span>
           <span>SUB-SECOND PAGE SPEEDS (99+ SCORE)</span>
           <span className="text-amber-400 font-bold">•</span>
           <span>AI AUTOMATION & REALIFY AI FOUNDER</span>
@@ -159,13 +161,13 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-amber-400 font-bold">•</span>
           <span>HIGH-CONVERTING REACT & WEB APPS</span>
           <span className="text-amber-400 font-bold">•</span>
+          <span>ACADEMIC & CONSULTANCY RESEARCH WRITING</span>
+          <span className="text-amber-400 font-bold">•</span>
           <span>SUB-SECOND PAGE SPEEDS (99+ SCORE)</span>
           <span className="text-amber-400 font-bold">•</span>
           <span>AI AUTOMATION & REALIFY AI FOUNDER</span>
           <span className="text-amber-400 font-bold">•</span>
           <span>$50,000+ FUNDED TRADING CAPITAL DISCIPLINE</span>
-          <span className="text-amber-400 font-bold">•</span>
-          <span>SOFTWARE & FULL-STACK ENGINEER</span>
           <span className="text-amber-400 font-bold">•</span>
         </div>
       </div>

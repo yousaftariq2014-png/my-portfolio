@@ -1,4 +1,4 @@
-export type ServiceId = 'forex-trading' | 'ai-video' | 'prompt-engineering' | 'web-development';
+export type ServiceId = 'forex-trading' | 'ai-video' | 'prompt-engineering' | 'web-development' | 'academic-writing';
 
 export interface Project {
   id: string;
@@ -11,12 +11,14 @@ export interface Project {
   tags: string[];
   externalUrl?: string;
   caseStudyUrl?: string;
-  type?: 'forex-terminal' | 'video-studio' | 'prompt-studio' | 'web-demo' | 'desktop' | 'phone' | 'game' | 'dice';
+  type?: 'forex-terminal' | 'video-studio' | 'prompt-studio' | 'web-demo' | 'desktop' | 'phone' | 'game' | 'dice' | 'pdf-viewer';
   stats?: { label: string; value: string }[];
   promptTemplate?: string;
   challenge?: string;
   solution?: string;
   impactMetrics?: { label: string; value: string }[];
+  pdfUrl?: string;
+  pagesCount?: number;
 }
 
 export interface ServiceDoor {

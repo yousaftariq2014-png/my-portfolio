@@ -73,11 +73,11 @@ export const DoorsSection: React.FC<DoorsSectionProps> = ({ onEnterDoor }) => {
 
         {/* 2-Column Desktop Grid: Doors on Left, Discipline Inspector on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left / Center: The 4 Doors in 3D Perspective */}
+          {/* Left / Center: The 5 Doors in 3D Perspective */}
           <div className="lg:col-span-7 flex justify-center">
             <div
               onMouseLeave={() => setActiveDoorId(null)}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 w-full max-w-2xl py-6 px-3 bg-[#131722]/60 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3 md:gap-3.5 w-full max-w-3xl py-6 px-3 bg-[#131722]/60 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl"
             >
               {SERVICE_DOORS.map((door) => {
                 const isOpen = activeDoorId === door.id;

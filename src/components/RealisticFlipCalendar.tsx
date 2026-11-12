@@ -42,6 +42,13 @@ export const RealisticFlipCalendar: React.FC<RealisticFlipCalendarProps> = ({ on
       detail: 'Autonomous Agent Prompts · Multimodal Pipelines · Precision Outputs',
       badge: 'PROMPT SYSTEMS',
       accentColor: '#38bdf8'
+    },
+    {
+      title: 'Academic & Research Writer',
+      subtitle: 'Distinction-Grade Business Coursework & Dissertations',
+      detail: 'BPP & UK Universities · 0% Plagiarism · Harvard & APA Referencing',
+      badge: 'RESEARCH WRITER',
+      accentColor: '#0ea5e9'
     }
   ];
 

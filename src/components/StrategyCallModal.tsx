@@ -258,6 +258,7 @@ export const StrategyCallModal: React.FC<StrategyCallModalProps> = ({
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {[
                     'Full-Stack Web App',
+                    'Academic Research / Coursework',
                     'AI Workflow / Automation',
                     'Forex / Prop Strategy',
                     'Brand & UI Design'

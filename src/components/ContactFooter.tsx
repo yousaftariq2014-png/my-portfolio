@@ -117,6 +117,14 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({
                   Web Engineering & Apps
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => onSelectDoor('academic-writing')}
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
+                  Academic & Research Writing
+                </button>
+              </li>
             </ul>
           </div>
 

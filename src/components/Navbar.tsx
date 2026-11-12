@@ -45,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: 'AI Video', action: () => onSelectDoor('ai-video') },
     { label: 'Prompt Eng.', action: () => onSelectDoor('prompt-engineering') },
     { label: 'Web Engineering', action: () => onSelectDoor('web-development') },
+    { label: 'Academic Writing', action: () => onSelectDoor('academic-writing') },
     { label: 'My story', action: onNavigateStory },
     { label: 'Contact', action: onOpenContact }
   ];

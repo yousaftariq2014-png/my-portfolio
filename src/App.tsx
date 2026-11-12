@@ -122,6 +122,7 @@ export default function App() {
               onOpenConsultation={() => handleOpenContact()}
               onViewForexProof={() => handleSelectDoorById('forex-trading')}
               onViewWebProof={() => handleSelectDoorById('web-development')}
+              onViewAcademicProof={() => handleSelectDoorById('academic-writing')}
             />
 
             {/* Signature Feature: 3D Doors */}
