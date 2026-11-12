@@ -259,11 +259,12 @@ export const SERVICE_DOORS: ServiceDoor[] = [
     tagline: 'High-distinction academic coursework, corporate consultancy reports & rigorous empirical research.',
     description: 'Expert research writer specializing in university-level business consultancy projects, destination management dissertations, and analytical essays for UK & international institutions (BPP University, Canterbury Christ Church University). Flawless Harvard and APA referencing, strict zero-plagiarism discipline, and empirical framework deployment (PESTLE, Porter’s Five Forces, SWOT, Mendelow’s Matrix, Butler’s TALC).',
     features: [
-      'Master-level corporate consultancy projects & business research dissertations',
-      'Original, Turnitin-proof content with 0% AI plagiarism guarantee',
-      'Advanced frameworks: PESTLE, Porter’s Five Forces, SWOT, Mendelow’s Matrix & TALC',
-      'Rigorous peer-reviewed academic referencing (Harvard & APA styles)',
-      'Proven track record with UK universities (BPP Business School & Canterbury Christ Church)'
+      'Zero AI (100% Human-Written · Guaranteed 0% AI detection on Turnitin, GPTZero & CopyLeaks)',
+      'Strict Zero Plagiarism Guarantee (< 5% similarity with full Turnitin verification report included)',
+      '100% Accurate Peer-Reviewed Citations (Harvard, APA 7th & Chicago with valid working DOIs)',
+      'Advanced frameworks: PESTLE, Porter’s Five Forces, SWOT, Mendelow’s Matrix & Butler’s TALC',
+      'Distinction Grade Standard (75%+ mark band) with Free Revisions until Tutor Approval',
+      '100% Confidential & Private with non-repository submission policy'
     ],
     colorTheme: {
       doorColor: '#172033',

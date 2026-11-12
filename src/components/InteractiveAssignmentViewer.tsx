@@ -74,15 +74,19 @@ export const InteractiveAssignmentViewer: React.FC = () => {
           </p>
         </div>
 
-        {/* Confidence Badges */}
+        {/* Confidence Badges (Anti-AI, Anti-Plagiarism, Accurate Citations) */}
         <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <span className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>0% Plagiarism Guaranteed</span>
+          <span className="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-mono flex items-center gap-1.5 shadow-sm">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <strong className="font-bold">0% AI Generated</strong> (100% Human-Written)
           </span>
-          <span className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-mono flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Distinction Standard</span>
+          <span className="px-3 py-1.5 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center gap-1.5 shadow-sm">
+            <CheckCircle className="w-4 h-4 text-cyan-400" />
+            <strong className="font-bold">0% Plagiarism</strong> (Turnitin Verified)
+          </span>
+          <span className="px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono flex items-center gap-1.5 shadow-sm">
+            <BookOpen className="w-4 h-4 text-amber-400" />
+            <strong className="font-bold">100% Real DOIs</strong> & Citations
           </span>
         </div>
       </div>
@@ -253,6 +257,106 @@ export const InteractiveAssignmentViewer: React.FC = () => {
           <div className="mt-4 p-3 rounded-xl bg-white/5 border border-white/5 text-[11px] font-mono text-slate-400 flex items-center justify-between">
             <span>Specializing in: Dissertations · Consultancy Projects · Business Proposals</span>
             <span className="text-emerald-400 font-bold shrink-0">Turnaround in 48-72h</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Strict Academic Integrity Protocol: No AI · No Plagiarism · Accurate Citations */}
+      <div className="mt-10 pt-8 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 uppercase tracking-wider mb-1">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Strict Academic Integrity Standards</span>
+            </div>
+            <h4 className="text-xl sm:text-2xl font-bold font-display text-white">
+              Zero AI. Zero Plagiarism. 100% Peer-Reviewed Verification.
+            </h4>
+          </div>
+          <span className="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 shrink-0">
+            Turnitin & AI Detection Proof
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Card 1: 0% AI Guarantee */}
+          <div className="bg-[#0e1118] border border-emerald-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors">
+            <div>
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm mb-3">
+                01
+              </div>
+              <h5 className="text-base font-bold font-display text-white mb-1.5 flex items-center gap-2">
+                <span>0% AI Generated</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">100% HUMAN</span>
+              </h5>
+              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                Every sentence is researched, synthesized, and hand-written from scratch. Completely passes Turnitin AI Detector, CopyLeaks, and GPTZero with guaranteed 0% AI detection.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+              <CheckCircle className="w-3.5 h-3.5" />
+              <span>Turnitin AI Score: 0%</span>
+            </div>
+          </div>
+
+          {/* Card 2: 0% Plagiarism Guarantee */}
+          <div className="bg-[#0e1118] border border-cyan-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
+            <div>
+              <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-mono font-bold text-sm mb-3">
+                02
+              </div>
+              <h5 className="text-base font-bold font-display text-white mb-1.5 flex items-center gap-2">
+                <span>Zero Plagiarism</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">&lt; 5% SIMILARITY</span>
+              </h5>
+              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                Cross-checked against global academic databases and published theses. Formulated with authentic paraphrasing and original conceptual arguments. Complete similarity report provided.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-cyan-300 flex items-center gap-1">
+              <CheckCircle className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Plagiarism Report Included</span>
+            </div>
+          </div>
+
+          {/* Card 3: Accurate Peer-Reviewed Citations */}
+          <div className="bg-[#0e1118] border border-amber-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-amber-500/40 transition-colors">
+            <div>
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-mono font-bold text-sm mb-3">
+                03
+              </div>
+              <h5 className="text-base font-bold font-display text-white mb-1.5 flex items-center gap-2">
+                <span>Accurate Citations</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">REAL DOIs</span>
+              </h5>
+              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                Zero fake or AI-hallucinated citations. Every source is pulled from authentic peer-reviewed journals (Elsevier, Emerald, Springer, SAGE) with real volume, issue, page, and working DOI links.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-amber-300 flex items-center gap-1">
+              <CheckCircle className="w-3.5 h-3.5 text-amber-400" />
+              <span>Harvard & APA 7th Compliant</span>
+            </div>
+          </div>
+
+          {/* Card 4: Free Revisions & Distinction Standard */}
+          <div className="bg-[#0e1118] border border-purple-500/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-purple-500/40 transition-colors">
+            <div>
+              <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center font-mono font-bold text-sm mb-3">
+                04
+              </div>
+              <h5 className="text-base font-bold font-display text-white mb-1.5 flex items-center gap-2">
+                <span>Free Revisions</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">TUTOR APPROVAL</span>
+              </h5>
+              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                Complimentary edits based on your professor’s or tutor’s feedback. Complete peace-of-mind with 100% strict privacy, non-repository submission, and distinction grade targeting.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/5 text-[11px] font-mono text-purple-300 flex items-center gap-1">
+              <CheckCircle className="w-3.5 h-3.5 text-purple-400" />
+              <span>100% Confidential & Secure</span>
+            </div>
           </div>
         </div>
       </div>
