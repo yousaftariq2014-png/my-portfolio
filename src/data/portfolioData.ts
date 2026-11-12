@@ -127,21 +127,21 @@ export const SERVICE_DOORS: ServiceDoor[] = [
         category: 'AI VIDEO GENERATION • REALIFY AI',
         description: 'All AI-generated videos created and published on the official Realify AI Facebook page. Grew the page completely organically from zero to 525+ followers using custom prompt engineering, scene composition, camera motion orchestration, and viral storytelling.',
         highlights: [
-          'Official Facebook Page: https://www.facebook.com/share/19kLKCKURK/',
-          'Viral Reel 01 (Sci-Fi Transformation): https://www.facebook.com/share/r/19ho5ETZ34/',
-          'Viral Video 02 (Epic Storytelling & Dawn): https://www.facebook.com/share/v/1E4cXWsv4j/',
-          'Viral Reel 03 (Unreal Motion Spike): https://www.facebook.com/share/r/1Fg7MaLH9U/',
-          'Viral Reel 04 (Next-Level AI Creativity): https://www.facebook.com/share/r/1CbrFsatff/',
-          '525+ organic followers grown purely via high-retention AI video generation'
+          'Official Facebook Page: https://www.facebook.com/share/19kLKCKURK/ (525+ Followers)',
+          '#1 Viral Hit (Jinnat Ne Banayi Thi Ye Imarat?): 2.8K+ Reactions · 156+ Shares (fb.com/share/r/1Fg7MaLH9U/)',
+          'Viral Hit (14 August Azadi Rally): 1.7K+ Reactions · 128+ Shares (fb.com/share/r/19ho5ETZ34/)',
+          'Viral Hit (Malak-ul-Maut Ki Maut): 422+ Reactions · 215+ Viral Shares (fb.com/share/v/1E4cXWsv4j/)',
+          'Viral Hit (Maqam-e-Ibrahim Holy Footprint): 233+ Reactions · 54+ Shares (fb.com/share/r/1CbrFsatff/)',
+          '100% Organic Page Growth: 525+ fans cultivated from scratch purely via AI video generation'
         ],
         challenge: 'Building an engaged social media video presence typically takes hundreds of manual animation hours, expensive cameras, and high production overhead.',
         solution: 'Architected automated prompt-to-scene workflows and visual pacing templates that generate cinematic, high-retention short-form content and organically grew Realify AI to 525+ followers.',
         impactMetrics: [
           { value: '525+', label: 'Organic Followers' },
-          { value: '4 Top Hits', label: 'Viral Reels & Videos' },
-          { value: '100%', label: 'AI Video Generated' }
+          { value: '2.8K+', label: 'Top Reel Reactions' },
+          { value: '215+', label: 'Top Reel Shares' }
         ],
-        tags: ['Realify AI', 'Facebook Channel', '525+ Followers', 'AI Video Generation', 'Viral Reels', 'Prompt-to-Scene', 'Storytelling'],
+        tags: ['Realify AI', 'Facebook Channel', '525+ Followers', 'AI Video Generation', '2.8K Reactions', 'Viral Reels', 'Storytelling'],
         type: 'video-studio',
         image: '/assets/aistudio/_5C79D7B0-8D94-41BC-B86F-CA7D11543B50__67ab51e0.png',
         externalUrl: 'https://www.facebook.com/share/19kLKCKURK/',
@@ -149,7 +149,7 @@ export const SERVICE_DOORS: ServiceDoor[] = [
         stats: [
           { label: 'Brand', value: 'Realify AI' },
           { label: 'Followers', value: '525+ Organic' },
-          { label: 'Top Hits', value: '4 Viral Videos' }
+          { label: 'Peak Reel', value: '2.8K+ Reactions' }
         ]
       }
     ]
