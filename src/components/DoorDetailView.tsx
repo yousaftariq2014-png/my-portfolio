@@ -9,6 +9,7 @@ import { InteractivePromptStudio } from './InteractivePromptStudio';
 import { PromptComparisonWidget } from './PromptComparisonWidget';
 import { ForexCertificatesVault } from './ForexCertificatesVault';
 import { InteractiveAssignmentViewer } from './InteractiveAssignmentViewer';
+import { InteractiveWebStudio } from './InteractiveWebStudio';
 
 interface DoorDetailViewProps {
   door: ServiceDoor;
@@ -41,17 +42,29 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
 
           <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-slate-400 truncate">
             <span
-              className="w-2 h-2 rounded-full shrink-0"
+              className="w-2 h-2 rounded-full shrink-0 animate-ping"
               style={{ backgroundColor: door.colorTheme.glowColor }}
             />
             <span className="uppercase truncate">{door.shortTitle} DOSSIER</span>
           </div>
         </div>
 
+        {/* Room Ambiance Banner */}
+        <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: door.colorTheme.glowColor }} />
+          <span className="text-slate-300">
+            {door.id === 'forex-trading' && '📈 Currency Exchange Floor · Live Candlestick Simulation & $50K Funded Trophy Vault'}
+            {door.id === 'ai-video' && '🎬 Realify AI Cinema Studio · 4 Viral Productions & 525+ Organic Followers Channel'}
+            {door.id === 'web-development' && '⚡ Production Web Architecture · 99+ Lighthouse Audit & Sub-Second Speeds'}
+            {door.id === 'prompt-engineering' && '🧠 Neural Prompt Matrix · Zero-Hallucination Engineering & Token Bench'}
+            {door.id === 'academic-writing' && '📜 High-Distinction Research Archive · BPP & Canterbury Christ Church (47 Pages)'}
+          </span>
+        </div>
+
         {/* Studio Header (From video Frame 00:07) */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono mb-3" style={{ color: door.colorTheme.glowColor }}>
-            <Layers className="w-3.5 h-3.5" /> Core Competency
+            <Layers className="w-3.5 h-3.5" /> Core Competency Room
           </div>
           <h1 className="text-4xl sm:text-6xl font-black font-display tracking-tight text-white mb-4">
             {door.title}
@@ -257,46 +270,50 @@ export const DoorDetailView: React.FC<DoorDetailViewProps> = ({
                       </div>
                     )}
 
-                    {/* Mode 6: Desktop Image / Browser Mockup Web Project */}
-                    {(proj.type === 'desktop' || (!proj.type && proj.image)) && proj.image && (
-                      <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#161a24] shadow-2xl group relative">
-                        {/* Browser Window Chrome */}
-                        <div className="px-4 py-2 bg-[#1c212e] border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-                          <div className="flex items-center gap-1.5">
-                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                          </div>
-                          <div className="px-3 py-0.5 rounded-md bg-black/40 border border-white/5 text-[10px] text-slate-300 flex items-center gap-1.5 truncate max-w-[220px]">
-                            <span className="text-emerald-400 font-bold">🔒</span>
-                            <span>{proj.externalUrl ? 'chaimehfil-flame.vercel.app' : proj.title}</span>
-                          </div>
-                          <span className="w-3" />
-                        </div>
-
-                        <a
-                          href={proj.externalUrl || '#'}
-                          target={proj.externalUrl ? '_blank' : undefined}
-                          rel="noreferrer"
-                          className="block relative overflow-hidden cursor-pointer"
-                        >
-                          <img
-                            src={proj.image}
-                            alt={proj.title}
-                            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                            referrerPolicy="no-referrer"
-                          />
-                          {proj.externalUrl && (
-                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white font-mono text-xs font-bold backdrop-blur-[2px]">
-                              <span className="px-3 py-1.5 rounded-xl bg-amber-400 text-black font-bold flex items-center gap-1.5 shadow-lg">
-                                <span>Explore Live App</span>
-                                <ExternalLink className="w-3.5 h-3.5" />
-                              </span>
-                              <span className="text-[11px] text-slate-300">Opens chaimehfil-flame.vercel.app</span>
+                    {/* Mode 6: Live Web Studio Testbench for Chai Mehfil Cafe or Desktop Mockup */}
+                    {proj.id === 'chai-mehfil-cafe' ? (
+                      <InteractiveWebStudio />
+                    ) : (
+                      (proj.type === 'desktop' || (!proj.type && proj.image)) && proj.image && (
+                        <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#161a24] shadow-2xl group relative">
+                          {/* Browser Window Chrome */}
+                          <div className="px-4 py-2 bg-[#1c212e] border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                             </div>
-                          )}
-                        </a>
-                      </div>
+                            <div className="px-3 py-0.5 rounded-md bg-black/40 border border-white/5 text-[10px] text-slate-300 flex items-center gap-1.5 truncate max-w-[220px]">
+                              <span className="text-emerald-400 font-bold">🔒</span>
+                              <span>{proj.externalUrl ? 'chaimehfil-flame.vercel.app' : proj.title}</span>
+                            </div>
+                            <span className="w-3" />
+                          </div>
+
+                          <a
+                            href={proj.externalUrl || '#'}
+                            target={proj.externalUrl ? '_blank' : undefined}
+                            rel="noreferrer"
+                            className="block relative overflow-hidden cursor-pointer"
+                          >
+                            <img
+                              src={proj.image}
+                              alt={proj.title}
+                              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
+                            />
+                            {proj.externalUrl && (
+                              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 text-white font-mono text-xs font-bold backdrop-blur-[2px]">
+                                <span className="px-3 py-1.5 rounded-xl bg-amber-400 text-black font-bold flex items-center gap-1.5 shadow-lg">
+                                  <span>Explore Live App</span>
+                                  <ExternalLink className="w-3.5 h-3.5" />
+                                </span>
+                                <span className="text-[11px] text-slate-300">Opens chaimehfil-flame.vercel.app</span>
+                              </div>
+                            )}
+                          </a>
+                        </div>
+                      )
                     )}
                   </div>
                 </div>

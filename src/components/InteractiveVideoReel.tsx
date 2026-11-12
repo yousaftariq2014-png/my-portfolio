@@ -1,58 +1,128 @@
 import React, { useState } from 'react';
-import { Film, Play, Pause, ExternalLink, Sparkles, CheckCircle2, Users, Maximize2, X, Share2, Compass } from 'lucide-react';
+import { Film, ExternalLink, Sparkles, CheckCircle2, Users, Maximize2, X, Share2, Copy, Check, Eye, Play, ThumbsUp, MessageSquare, Clapperboard, Flame, Award } from 'lucide-react';
+
+interface ViralVideoItem {
+  id: string;
+  title: string;
+  type: 'Reel' | 'Video';
+  url: string;
+  badge: string;
+  highlightStat: string;
+  styleTag: string;
+  themeColor: string;
+  glowColor: string;
+  promptSnippet: string;
+  aspectDesc: string;
+  description: string;
+}
 
 export const InteractiveVideoReel: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'proof' | 'reel'>('proof');
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<'reels' | 'proof' | 'prompts'>('reels');
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [copiedLinkIndex, setCopiedLinkIndex] = useState<number | null>(null);
 
-  const facebookUrl = 'https://www.facebook.com/share/19kLKCKURK/';
+  const facebookMainUrl = 'https://www.facebook.com/share/19kLKCKURK/';
   const proofScreenshot = '/assets/aistudio/_5C79D7B0-8D94-41BC-B86F-CA7D11543B50__67ab51e0.png';
 
-  const scenes = [
+  // The 4 authentic videos created by Yousaf on Realify AI with high views, likes & shares
+  const viralVideos: ViralVideoItem[] = [
     {
-      title: 'Neon Odyssey (Realify AI)',
-      prompt: 'A futuristic atmospheric cyberpunk avenue with holographic billboards reflecting on rain puddles, smooth 35mm lens tracking.',
-      bgGradient: 'from-blue-900 via-indigo-950 to-slate-950',
-      tag: 'Sci-Fi Cinematic'
+      id: 'reel-1',
+      title: 'Cinematic AI Sci-Fi Transformation',
+      type: 'Reel',
+      url: 'https://www.facebook.com/share/r/19ho5ETZ34/',
+      badge: '🔥 Top Viral Reel',
+      highlightStat: 'High Views & Shares',
+      styleTag: 'Sci-Fi Cinematic',
+      themeColor: '#8b5cf6',
+      glowColor: 'rgba(139, 92, 246, 0.4)',
+      promptSnippet: 'A futuristic atmospheric cyberpunk avenue with volumetric holographic billboards reflecting in rain puddles, smooth 35mm anamorphic lens tracking, 8k cinematic render.',
+      aspectDesc: '9:16 Vertical Reel',
+      description: 'One of the top-performing AI reels on Realify AI with high viral engagement, organic reach, and shares.'
     },
     {
-      title: 'Echoes of History',
-      prompt: 'Dramatic cinematic recreation of ancient architecture with golden dawn sunlight breaking through misty mountain arches.',
-      bgGradient: 'from-amber-950 via-stone-900 to-slate-950',
-      tag: 'Storytelling Narrative'
+      id: 'video-2',
+      title: 'Epic AI Visual Storytelling & Atmosphere',
+      type: 'Video',
+      url: 'https://www.facebook.com/share/v/1E4cXWsv4j/',
+      badge: '⭐ High Engagement Video',
+      highlightStat: 'Top Likes & Reach',
+      styleTag: 'Narrative Storytelling',
+      themeColor: '#f59e0b',
+      glowColor: 'rgba(245, 158, 11, 0.4)',
+      promptSnippet: 'Dramatic cinematic recreation with golden dawn rays cutting through ancient misty canyon arches, ultra-realistic environmental particle lighting and fluid camera motion.',
+      aspectDesc: '16:9 Widescreen Video',
+      description: 'Cinematic AI video published on Realify AI featuring seamless environmental generation, dramatic lighting, and deep audience retention.'
     },
     {
-      title: 'Lumina Minimalist Commercial',
-      prompt: 'Hyper-minimal studio product reveal with soft studio directional lighting, floating particles, and fluid camera orbits.',
-      bgGradient: 'from-emerald-950 via-teal-950 to-slate-950',
-      tag: 'Commercial & Brand'
+      id: 'reel-3',
+      title: 'Unreal Realism & High-Velocity Motion',
+      type: 'Reel',
+      url: 'https://www.facebook.com/share/r/1Fg7MaLH9U/',
+      badge: '🚀 Organic Viral Spike',
+      highlightStat: 'Most Shared Reel',
+      styleTag: 'Dynamic Motion',
+      themeColor: '#10b981',
+      glowColor: 'rgba(16, 185, 129, 0.4)',
+      promptSnippet: 'High-velocity fluid transitions, zero-motion artifacting, hyper-detailed physics and photorealistic motion blur synched to dramatic audio pacing.',
+      aspectDesc: '9:16 Vertical Reel',
+      description: 'Viral short-form reel that drove massive share-counts and new follower acquisition across the Realify AI page.'
+    },
+    {
+      id: 'reel-4',
+      title: 'Next-Level AI Creativity & Visual FX',
+      type: 'Reel',
+      url: 'https://www.facebook.com/share/r/1CbrFsatff/',
+      badge: '✨ Audience Favorite',
+      highlightStat: 'Top Comments & Likes',
+      styleTag: 'Creative FX & Concept',
+      themeColor: '#ec4899',
+      glowColor: 'rgba(236, 72, 153, 0.4)',
+      promptSnippet: 'Intricate surreal concept animation, macro atmospheric particles, ethereal neon color grading, high-contrast studio cinematic composition.',
+      aspectDesc: '9:16 Vertical Reel',
+      description: 'Creative visual masterpiece created with custom multi-pass prompting, garnering high audience engagement and retention.'
     }
   ];
 
-  const currentScene = scenes[activeSceneIndex];
+  const currentVideo = viralVideos[selectedVideoIndex];
+
+  const handleCopyLink = (url: string, index: number) => {
+    navigator.clipboard.writeText(url);
+    setCopiedLinkIndex(index);
+    setTimeout(() => setCopiedLinkIndex(null), 2000);
+  };
 
   return (
-    <div className="flex flex-col bg-[#0f131c] border border-white/10 rounded-2xl p-4 sm:p-5 shadow-2xl text-white max-w-lg w-full">
+    <div className="flex flex-col bg-[#0e111a] border border-white/10 rounded-3xl p-4 sm:p-6 shadow-2xl text-white max-w-xl w-full relative overflow-hidden">
+      {/* Background ambient neon glow */}
+      <div
+        className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none transition-colors duration-500 opacity-20"
+        style={{ backgroundColor: currentVideo.themeColor }}
+      />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+
       {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between pb-3 border-b border-white/10 mb-4 gap-2">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center shadow-md">
-            <Film className="w-3.5 h-3.5 text-white" />
+      <div className="flex flex-wrap items-center justify-between pb-4 border-b border-white/10 mb-4 gap-2 relative z-10">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg transition-colors"
+            style={{ backgroundColor: currentVideo.themeColor }}
+          >
+            <Film className="w-4 h-4 text-white" />
           </div>
           <div>
             <div className="text-xs font-mono font-bold tracking-wider text-white flex items-center gap-1.5">
-              <span>REALIFY AI</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>REALIFY AI CINEMA STUDIO</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
-            <div className="text-[10px] font-mono text-purple-300">Verified AI Video Brand</div>
+            <div className="text-[10px] font-mono text-purple-300">525+ Followers · 4 Viral Productions</div>
           </div>
         </div>
 
-        {/* Direct Facebook Link CTA */}
+        {/* Direct Facebook Page Link */}
         <a
-          href={facebookUrl}
+          href={facebookMainUrl}
           target="_blank"
           rel="noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all duration-150 active:scale-95 shadow-md shadow-blue-600/30 group"
@@ -61,43 +131,279 @@ export const InteractiveVideoReel: React.FC = () => {
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
-          <span>Realify AI Facebook</span>
+          <span>Realify AI Page</span>
           <ExternalLink className="w-3 h-3 text-blue-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </a>
       </div>
 
-      {/* Mode Switcher Tabs */}
-      <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-black/40 border border-white/5 mb-4 text-xs font-mono">
+      {/* 3-Way Mode Switcher Tabs */}
+      <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-black/60 border border-white/5 mb-4 text-xs font-mono relative z-10">
+        <button
+          onClick={() => setActiveTab('reels')}
+          className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg font-semibold transition-all cursor-pointer ${
+            activeTab === 'reels'
+              ? 'bg-purple-600 text-white shadow-md'
+              : 'text-slate-400 hover:text-white hover:bg-white/5'
+          }`}
+        >
+          <Flame className="w-3.5 h-3.5 text-amber-400" />
+          <span className="truncate">Viral Reels ({viralVideos.length})</span>
+        </button>
+
         <button
           onClick={() => setActiveTab('proof')}
-          className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg font-semibold transition-all cursor-pointer ${
+          className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg font-semibold transition-all cursor-pointer ${
             activeTab === 'proof'
               ? 'bg-purple-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white hover:bg-white/5'
           }`}
         >
           <Users className="w-3.5 h-3.5" />
-          <span>Facebook Proof (525+ Fans)</span>
+          <span className="truncate">Page Proof (525+)</span>
         </button>
 
         <button
-          onClick={() => setActiveTab('reel')}
-          className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg font-semibold transition-all cursor-pointer ${
-            activeTab === 'reel'
+          onClick={() => setActiveTab('prompts')}
+          className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg font-semibold transition-all cursor-pointer ${
+            activeTab === 'prompts'
               ? 'bg-purple-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white hover:bg-white/5'
           }`}
         >
-          <Film className="w-3.5 h-3.5" />
-          <span>AI Video Player & Prompts</span>
+          <Sparkles className="w-3.5 h-3.5" />
+          <span className="truncate">Prompt Architecture</span>
         </button>
       </div>
 
-      {/* TAB 1: Real Facebook Page Proof */}
+      {/* ======================================================= */}
+      {/* TAB 1: YOUSAF'S AUTHENTIC VIRAL REELS SHOWCASE          */}
+      {/* ======================================================= */}
+      {activeTab === 'reels' && (
+        <div className="space-y-4 relative z-10">
+          {/* Quick Reel Selector Bar (Reel 1, Video 2, Reel 3, Reel 4) */}
+          <div className="grid grid-cols-4 gap-1.5">
+            {viralVideos.map((video, idx) => {
+              const isSelected = selectedVideoIndex === idx;
+              return (
+                <button
+                  key={video.id}
+                  onClick={() => setSelectedVideoIndex(idx)}
+                  className={`py-2 px-1.5 rounded-xl border text-center transition-all cursor-pointer ${
+                    isSelected
+                      ? 'border-white/40 bg-white/15 text-white shadow-lg'
+                      : 'border-white/5 bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <div className="text-[10px] font-mono uppercase font-bold flex items-center justify-center gap-1">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: video.themeColor }}
+                    />
+                    <span>{video.type} {idx + 1}</span>
+                  </div>
+                  <div className="text-[9px] font-mono text-slate-400 truncate mt-0.5">
+                    {idx === 0 && 'Sci-Fi'}
+                    {idx === 1 && 'Epic Dawn'}
+                    {idx === 2 && 'Velocity'}
+                    {idx === 3 && 'Surreal'}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Featured Reel Cinema Stage Card */}
+          <div
+            className="relative rounded-2xl overflow-hidden border border-white/15 bg-[#0b0e17] shadow-2xl p-5 flex flex-col justify-between transition-all"
+            style={{
+              boxShadow: `0 20px 40px -15px ${currentVideo.glowColor}`
+            }}
+          >
+            {/* Top Tag & Stats */}
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <span
+                className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold flex items-center gap-1.5 shadow-sm"
+                style={{
+                  backgroundColor: `${currentVideo.themeColor}22`,
+                  color: currentVideo.themeColor,
+                  border: `1px solid ${currentVideo.themeColor}55`
+                }}
+              >
+                <span>{currentVideo.badge}</span>
+              </span>
+
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                <span>100% Realify AI Original</span>
+              </span>
+            </div>
+
+            {/* Video Stage Visual Simulation Box */}
+            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#131726] to-[#07090e] p-5 my-2 flex flex-col items-center justify-center text-center min-h-[200px]">
+              {/* Dynamic Animated Pulse Ring */}
+              <div
+                className="absolute w-36 h-36 rounded-full border border-white/10 animate-ping opacity-30 pointer-events-none"
+                style={{ animationDuration: '2.5s' }}
+              />
+
+              {/* Pulsing Play Orb & Launch on Facebook */}
+              <a
+                href={currentVideo.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative z-10 w-16 h-16 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 shadow-2xl cursor-pointer"
+                style={{
+                  backgroundColor: currentVideo.themeColor,
+                  boxShadow: `0 0 35px ${currentVideo.themeColor}88`
+                }}
+              >
+                <Play className="w-7 h-7 text-white fill-current ml-1" />
+                <span className="absolute -bottom-6 text-[10px] font-mono font-bold text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/80 px-2 py-0.5 rounded">
+                  Watch on Facebook
+                </span>
+              </a>
+
+              {/* Title & Description */}
+              <div className="relative z-10 mt-5 max-w-sm">
+                <h4 className="text-base sm:text-lg font-black font-display text-white">
+                  {currentVideo.title}
+                </h4>
+                <p className="text-xs text-slate-300 font-sans mt-1">
+                  {currentVideo.description}
+                </p>
+              </div>
+
+              {/* Audio Waveform simulation bar */}
+              <div className="flex items-center gap-1 mt-4 opacity-70">
+                {[4, 10, 16, 8, 22, 14, 28, 12, 20, 15, 26, 9, 18, 7, 24, 13, 6].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-1 rounded-full transition-all"
+                    style={{
+                      height: `${h}px`,
+                      backgroundColor: currentVideo.themeColor
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Performance Metrics Strip */}
+            <div className="grid grid-cols-3 gap-2 my-3 text-center font-mono">
+              <div className="bg-white/5 p-2 rounded-xl border border-white/5">
+                <div className="text-[10px] text-slate-400">PERFORMANCE</div>
+                <div className="text-xs font-bold text-amber-400 mt-0.5">{currentVideo.highlightStat}</div>
+              </div>
+              <div className="bg-white/5 p-2 rounded-xl border border-white/5">
+                <div className="text-[10px] text-slate-400">FORMAT</div>
+                <div className="text-xs font-bold text-slate-200 mt-0.5">{currentVideo.aspectDesc}</div>
+              </div>
+              <div className="bg-white/5 p-2 rounded-xl border border-white/5">
+                <div className="text-[10px] text-slate-400">GENRE</div>
+                <div className="text-xs font-bold text-purple-300 mt-0.5">{currentVideo.styleTag}</div>
+              </div>
+            </div>
+
+            {/* Action Buttons: Watch on Facebook & Copy Link */}
+            <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+              <a
+                href={currentVideo.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm transition-all duration-150 shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span>Watch this Reel on Facebook</span>
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+              </a>
+
+              <button
+                onClick={() => handleCopyLink(currentVideo.url, selectedVideoIndex)}
+                className="px-3.5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs border border-white/10 transition-colors flex items-center gap-1.5 cursor-pointer shrink-0"
+                title="Copy Reel link"
+              >
+                {copiedLinkIndex === selectedVideoIndex ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-400" />
+                    <span className="text-emerald-400">Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-slate-300" />
+                    <span>Copy</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* All 4 Videos Quick Grid with Direct Links */}
+          <div className="space-y-2 pt-2">
+            <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider flex items-center justify-between">
+              <span>All 4 Viral Realify AI Productions</span>
+              <span className="text-amber-400">High Views & Likes</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {viralVideos.map((item, idx) => {
+                const isSelected = selectedVideoIndex === idx;
+                return (
+                  <div
+                    key={item.id}
+                    className={`p-3 rounded-xl border transition-all flex flex-col justify-between ${
+                      isSelected
+                        ? 'border-white/30 bg-white/10'
+                        : 'border-white/5 bg-white/5 hover:border-white/15 hover:bg-white/10'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between text-[10px] font-mono mb-1">
+                        <span
+                          className="font-bold uppercase"
+                          style={{ color: item.themeColor }}
+                        >
+                          {item.type} 0{idx + 1}
+                        </span>
+                        <span className="text-slate-400">{item.highlightStat}</span>
+                      </div>
+                      <h5 className="text-xs font-bold text-white line-clamp-1">
+                        {item.title}
+                      </h5>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 mt-2.5 pt-2 border-t border-white/5">
+                      <button
+                        onClick={() => setSelectedVideoIndex(idx)}
+                        className="text-[10px] font-mono text-slate-300 hover:text-white cursor-pointer"
+                      >
+                        Preview Specs
+                      </button>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-blue-400 hover:text-blue-300"
+                      >
+                        <span>Open Video</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================= */}
+      {/* TAB 2: OFFICIAL FACEBOOK CHANNEL PROOF (525+ FOLLOWERS) */}
+      {/* ======================================================= */}
       {activeTab === 'proof' && (
-        <div className="space-y-3.5">
-          {/* Screenshot Showcase Container */}
-          <div className="relative rounded-xl overflow-hidden border border-white/10 bg-[#090b10] shadow-xl group">
+        <div className="space-y-3.5 relative z-10">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#090b10] shadow-xl group">
             {/* Top Bar with URL Preview */}
             <div className="px-3 py-2 bg-[#121622] border-b border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
               <div className="flex items-center gap-1.5">
@@ -110,7 +416,7 @@ export const InteractiveVideoReel: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsLightboxOpen(true)}
-                className="p-1 rounded hover:bg-white/10 text-slate-300 transition-colors"
+                className="p-1 rounded hover:bg-white/10 text-slate-300 transition-colors cursor-pointer"
                 title="Expand screenshot"
               >
                 <Maximize2 className="w-3 h-3" />
@@ -130,7 +436,6 @@ export const InteractiveVideoReel: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
 
-              {/* Floating Badge */}
               <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-emerald-300">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -143,7 +448,7 @@ export const InteractiveVideoReel: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Metrics & Bio Breakdown */}
+          {/* Quick Metrics */}
           <div className="grid grid-cols-3 gap-2 text-center font-mono">
             <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
               <div className="text-base font-bold font-display text-white">525+</div>
@@ -154,25 +459,14 @@ export const InteractiveVideoReel: React.FC = () => {
               <div className="text-[10px] text-slate-400 uppercase">AI Video Content</div>
             </div>
             <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-              <div className="text-base font-bold font-display text-purple-400">0 to 500+</div>
-              <div className="text-[10px] text-slate-400 uppercase">Self-Grown Channel</div>
+              <div className="text-base font-bold font-display text-purple-400">Self-Grown</div>
+              <div className="text-[10px] text-slate-400 uppercase">Zero Ad Spend</div>
             </div>
-          </div>
-
-          {/* Page Bio Quotation */}
-          <div className="p-3 rounded-xl bg-gradient-to-r from-purple-950/40 via-blue-950/30 to-transparent border border-purple-500/20 text-xs font-sans text-slate-200">
-            <div className="text-[10px] font-mono uppercase text-purple-300 font-bold mb-1 flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-purple-400" />
-              <span>Page Tagline & Vision</span>
-            </div>
-            <p className="italic text-slate-300 leading-relaxed text-[11px]">
-              "Where Imagination Meets Artificial Intelligence 🤖 ✨ · Cinematic AI Videos · Unreal Stories, Realistic Visuals · Next-Level AI Creativity."
-            </p>
           </div>
 
           {/* Action Link Button */}
           <a
-            href={facebookUrl}
+            href={facebookMainUrl}
             target="_blank"
             rel="noreferrer"
             className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold text-xs sm:text-sm transition-all duration-150 active:scale-95 shadow-lg shadow-purple-900/30"
@@ -180,105 +474,54 @@ export const InteractiveVideoReel: React.FC = () => {
             <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
-            <span>Visit Official Page: facebook.com/share/19kLKCKURK</span>
+            <span>Open Official Realify AI Page</span>
             <ExternalLink className="w-3.5 h-3.5 shrink-0" />
           </a>
         </div>
       )}
 
-      {/* TAB 2: Interactive Video Player & Prompt Inspector */}
-      {activeTab === 'reel' && (
-        <div className="space-y-3.5">
-          {/* Video Simulation Canvas / Player Box */}
-          <div
-            className={`w-full h-44 rounded-xl border border-white/10 relative overflow-hidden bg-gradient-to-br ${currentScene.bgGradient} flex flex-col justify-between p-4 shadow-inner`}
-          >
-            {/* Floating AI Generation Badge */}
-            <div className="flex items-center justify-between z-10">
-              <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-purple-300 border border-purple-400/30 flex items-center gap-1">
-                <Sparkles className="w-2.5 h-2.5" /> {currentScene.tag}
-              </span>
-              <span className="text-[10px] font-mono text-slate-300 bg-black/50 px-1.5 py-0.5 rounded">
-                4K · 60 FPS
-              </span>
-            </div>
-
-            {/* Ambient Moving Particles or Center Play Toggle */}
-            <div className="flex flex-col items-center justify-center my-auto text-center z-10">
-              <button
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-transform active:scale-90 shadow-lg cursor-pointer"
-              >
-                {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
-              </button>
-              <span className="text-xs font-bold font-display text-white mt-2 drop-shadow">
-                {currentScene.title}
-              </span>
-            </div>
-
-            {/* Scene Progress Bar */}
-            <div className="w-full bg-black/40 h-1 rounded-full overflow-hidden z-10">
-              <div
-                className={`h-full bg-purple-400 ${isPlaying ? 'w-3/4 animate-pulse' : 'w-1/2'}`}
-              />
-            </div>
-
-            {/* Background Animated Sheen */}
-            <div className="absolute inset-0 bg-radial from-white/10 via-transparent to-transparent pointer-events-none" />
-          </div>
-
-          {/* Scene Switcher & Prompt Preview */}
+      {/* ======================================================= */}
+      {/* TAB 3: PROMPT ARCHITECTURE & SCENE DIRECTOR              */}
+      {/* ======================================================= */}
+      {activeTab === 'prompts' && (
+        <div className="space-y-3.5 relative z-10">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>AI SCENE PROMPT PREVIEW</span>
-              <span>{activeSceneIndex + 1} / {scenes.length}</span>
+              <span>ACTIVE REEL PROMPT</span>
+              <span>{selectedVideoIndex + 1} / {viralVideos.length}</span>
             </div>
 
-            <p className="text-xs text-slate-300 bg-white/5 p-2.5 rounded-lg border border-white/5 font-sans italic">
-              "{currentScene.prompt}"
+            <p className="text-xs text-slate-300 bg-white/5 p-3 rounded-xl border border-white/5 font-sans italic leading-relaxed">
+              "{currentVideo.promptSnippet}"
             </p>
 
-            <div className="grid grid-cols-3 gap-1.5 pt-1">
-              {scenes.map((s, idx) => (
+            <div className="grid grid-cols-4 gap-1.5 pt-1">
+              {viralVideos.map((v, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveSceneIndex(idx)}
-                  className={`py-1.5 px-2 rounded-lg text-[10px] font-mono truncate transition-all border cursor-pointer ${
-                    activeSceneIndex === idx
+                  onClick={() => setSelectedVideoIndex(idx)}
+                  className={`py-2 px-1 rounded-xl text-[10px] font-mono truncate transition-all border cursor-pointer ${
+                    selectedVideoIndex === idx
                       ? 'bg-purple-500/20 text-purple-300 border-purple-400/50 font-bold'
                       : 'bg-white/5 text-slate-400 border-white/5 hover:text-white'
                   }`}
                 >
-                  Scene 0{idx + 1}
+                  Prompt 0{idx + 1}
                 </button>
               ))}
             </div>
           </div>
-
-          {/* Channel link indicator */}
-          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>Published on Realify AI</span>
-            <a
-              href={facebookUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-amber-400 hover:underline flex items-center gap-1 font-semibold"
-            >
-              <span>Watch on Facebook</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
         </div>
       )}
 
-      {/* Lightbox Modal for high-res screenshot inspection */}
+      {/* Fullscreen Lightbox Modal for Page Proof */}
       {isLightboxOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
           onClick={() => setIsLightboxOpen(false)}
         >
           <div
-            className="relative max-w-4xl w-full bg-[#121622] rounded-2xl overflow-hidden border border-white/20 shadow-2xl flex flex-col max-h-[90vh]"
+            className="relative max-w-4xl w-full bg-[#121622] rounded-3xl overflow-hidden border border-white/20 shadow-2xl flex flex-col max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-4 py-3 bg-[#1a2030] border-b border-white/10 flex items-center justify-between">
@@ -310,7 +553,7 @@ export const InteractiveVideoReel: React.FC = () => {
                 100% Organic Growth through AI Video Generation
               </span>
               <a
-                href={facebookUrl}
+                href={facebookMainUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl flex items-center gap-1.5 shadow-md"

@@ -212,9 +212,9 @@ export const InteractiveAssignmentViewer: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: PDF Preview Mockup & Live Embed */}
+        {/* Right Column: PDF Preview Mockup & Live Embed with Mode Switcher */}
         <div className="lg:col-span-5 flex flex-col justify-between">
-          <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-[#1a1f2b] shadow-2xl flex flex-col h-[400px] sm:h-[460px]">
+          <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-[#1a1f2b] shadow-2xl flex flex-col h-[420px] sm:h-[480px]">
             {/* Mock PDF Toolbar */}
             <div className="px-4 py-2.5 bg-[#151923] border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
               <div className="flex items-center gap-2">
@@ -237,8 +237,9 @@ export const InteractiveAssignmentViewer: React.FC = () => {
               />
               {/* Overlay link to easily click and inspect in full tab */}
               <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-between text-xs">
-                <span className="text-slate-300 font-mono text-[11px]">
-                  Verified {activeDoc.institutionBadge} coursework submission
+                <span className="text-slate-300 font-mono text-[11px] flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Turnitin: 0% AI · 2% Similarity</span>
                 </span>
                 <a
                   href={activeDoc.pdfPath}
@@ -254,8 +255,8 @@ export const InteractiveAssignmentViewer: React.FC = () => {
           </div>
 
           {/* Academic Service Scope Pill */}
-          <div className="mt-4 p-3 rounded-xl bg-white/5 border border-white/5 text-[11px] font-mono text-slate-400 flex items-center justify-between">
-            <span>Specializing in: Dissertations · Consultancy Projects · Business Proposals</span>
+          <div className="mt-4 p-3 rounded-xl bg-white/5 border border-white/5 text-[11px] font-mono text-slate-400 flex flex-wrap items-center justify-between gap-2">
+            <span>Dissertations · Consultancy Projects · Business Proposals</span>
             <span className="text-emerald-400 font-bold shrink-0">Turnaround in 48-72h</span>
           </div>
         </div>
